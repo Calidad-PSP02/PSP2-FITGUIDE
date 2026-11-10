@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to bottom right, #E4F2E7, #93BFB7);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="omr.uacm.sistemafitguide.PantallaCoachMenuController">
+   <children>
+      <VBox alignment="CENTER" maxWidth="840.0" prefHeight="540.0" prefWidth="840.0" spacing="25.0" style="-fx-background-color: white; -fx-background-radius: 25; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 15, 0, 0, 8); -fx-padding: 30;">
+         <children>
+            <!-- Encabezado -->
+            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="780.0">
+               <children>
+                  <VBox HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="lblTitulo" text="Panel de Administración del Coach" textFill="#1b3a2d">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblSubtitulo" text="Sistema FitGuide — Gestión de Ejercicios y Entrenamiento Progresivo" textFill="#5f5e5a">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#IrAMenuUsuario" style="-fx-background-color: #E8F5E9; -fx-text-fill: #2E7D32; -fx-font-weight: bold; -fx-background-radius: 12; -fx-padding: 8 16;" text="👤 Vista Usuario">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#CerrarSesion" style="-fx-background-color: #ECEFF1; -fx-text-fill: #37474F; -fx-font-weight: bold; -fx-background-radius: 12; -fx-padding: 8 18;" text="Cerrar Sesión">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+
+            <!-- Cards de opciones -->
+            <HBox alignment="CENTER" prefHeight="350.0" prefWidth="780.0" spacing="40.0">
+               <children>
+                  <!-- Card 1: Catálogo de Ejercicios -->
+                  <VBox alignment="CENTER" maxWidth="340.0" prefHeight="330.0" prefWidth="340.0" spacing="15.0" style="-fx-background-color: #F9FBF9; -fx-border-color: #A5D6A7; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 25; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 10, 0, 0, 4);">
+                     <children>
+                        <Label text="🏋️" textFill="#2e7d32">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Label>
+                        <Label text="Catálogo de Ejercicios" textFill="#1b3a2d">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" text="Consulta, agrega, edita o elimina ejercicios de la base de datos (Brazo, Abdomen, Pierna)." textAlignment="CENTER" textFill="#616161" wrapText="true">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#IrACatalogoEjercicios" prefHeight="42.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 14; -fx-cursor: hand;" text="Abrir Catálogo">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </VBox>
+
+                  <!-- Card 2: Gestión de Rutinas / Entrenamiento Progresivo -->
+                  <VBox alignment="CENTER" maxWidth="340.0" prefHeight="330.0" prefWidth="340.0" spacing="15.0" style="-fx-background-color: #F9FBF9; -fx-border-color: #80CBC4; -fx-border-radius: 20; -fx-background-radius: 20; -fx-padding: 25; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 10, 0, 0, 4);">
+                     <children>
+                        <Label text="📈" textFill="#00695c">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Label>
+                        <Label text="Rutinas de Usuarios" textFill="#1b3a2d">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" text="Supervisa las rutinas de los usuarios y edita series, descansos, repeticiones y peso para un entrenamiento progresivo." textAlignment="CENTER" textFill="#616161" wrapText="true">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#IrAGestionRutinas" prefHeight="42.0" style="-fx-background-color: #00695C; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 14; -fx-cursor: hand;" text="Gestionar Rutinas">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

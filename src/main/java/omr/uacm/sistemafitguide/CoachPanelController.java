@@ -71,7 +71,7 @@ public class CoachPanelController implements Initializable {
         try (Connection con = abrirConexion()) {
 
             try (Statement st = con.createStatement();
-                 ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM historial_ejercicios")) {
+                 ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM ejercicios_catalogo")) {
                 if (rs.next() && LblNumEjercicios != null)
                     LblNumEjercicios.setText(String.valueOf(rs.getInt(1)));
             } catch (SQLException e) { 
@@ -157,19 +157,21 @@ public class CoachPanelController implements Initializable {
     @FXML
     private void HandleIrEjercicios() {
         detenerTimeline();
-        navegarA("PantallaEjercicios");
+        navegarA("PantallaCoachCatalogoEjercicios");
     }
 
     @FXML
     private void HandleAgregarEjercicios() {
         detenerTimeline();
-        navegarA("PantallaAgregarEjercicios");
+        PantallaCoachFormularioEjercicioController.modoEdicion = false;
+        PantallaCoachFormularioEjercicioController.ejercicioAEditar = null;
+        navegarA("PantallaCoachFormularioEjercicio");
     }
 
     @FXML
     private void HandleRevisarUsuarios() {
         detenerTimeline();
-        navegarA("PantallaUsuarios");
+        navegarA("PantallaCoachGestionRutinas");
     }
 
     @FXML
@@ -181,6 +183,7 @@ public class CoachPanelController implements Initializable {
     @FXML
     private void HandleCerrarSesion() {
         detenerTimeline();
+        Sesion.cerrarSesion();
         NombreCoach   = "Coach";
         IdCoachActual = -1;
         navegarA("PantallaInicio"); 

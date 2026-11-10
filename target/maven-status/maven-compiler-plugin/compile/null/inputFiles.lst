@@ -7,10 +7,14 @@ C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable Fi
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\EstaturaFueraDeRangoException.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\PesoFueraDeRangoException.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\Sesion.java
+C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\PantallaCoachCatalogoEjerciciosController.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\RutinaVaciaException.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\GestionRutina.java
+C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\PantallaCoachFormularioEjercicioController.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\PantallaInicioController.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\CoachDAO.java
+C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\CoachRutinaDao.java
+C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\EjercicioCatalogoDao.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\HistorialEjercicioDAO.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\RutinaGuardadaDAO.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\CatalogoEjercicios.java
@@ -24,6 +28,7 @@ C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable Fi
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\PantallaBienvenidoUsuarioController.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\Coach.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\HistorialRutina.java
+C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\PantallaCoachMenuController.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\CredencialesInvalidasException.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\ConexionDB.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\HistorialRutinaDAO.java
@@ -32,6 +37,9 @@ C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable Fi
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\HistorialEjercicio.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\SeleccionIncompletaException.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\PantallaEjecucionController.java
+C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\EjercicioCoach.java
+C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\PantallaCoachGestionRutinasController.java
+C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\PantallaCoachEditarRutinaController.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\UsuarioDAO.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\App.java
 C:\Users\migue\OneDrive\Imágenes\Escritorio\Proyecto Construccion\Entregable FitGuide\SistemaFitGuide\src\main\java\omr\uacm\sistemafitguide\PantallaListaEjerciciosController.java

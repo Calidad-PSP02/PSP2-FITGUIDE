@@ -24,6 +24,9 @@ import java.time.YearMonth;
 import java.util.Set;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
+import java.io.File;
+import java.sql.SQLException;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -124,6 +127,47 @@ public class PantallaBienvenidoUsuarioController implements Initializable {
     @FXML
     public void accionCerrarNotificacion() {
         panelNotificacion.setVisible(false);
+    }
+    
+     @FXML
+    private void accionExportarHistorial(ActionEvent event) {
+        FileChooser selector = new FileChooser();
+        selector.setTitle("Exportar historial de entrenamientos");
+        selector.setInitialFileName("historial_fitguide_" + LocalDate.now() + ".csv");
+        selector.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Archivo CSV (*.csv)", "*.csv"),
+            new FileChooser.ExtensionFilter("Archivo de texto (*.txt)", "*.txt"));
+
+        File archivo = selector.showSaveDialog(((Node) event.getSource()).getScene().getWindow());
+        if (archivo == null) return; // el usuario canceló
+
+        FileChooser.ExtensionFilter filtro = selector.getSelectedExtensionFilter();
+        String nombre = archivo.getName().toLowerCase();
+        boolean esTxt = nombre.endsWith(".txt")
+            || (!nombre.endsWith(".csv") && filtro != null && filtro.getExtensions().contains("*.txt"));
+        if (!nombre.endsWith(".txt") && !nombre.endsWith(".csv")) {
+            archivo = new File(archivo.getParentFile(), archivo.getName() + (esTxt ? ".txt" : ".csv"));
+        }
+        String formato = esTxt ? HistorialRutinaDAO.FORMATO_TXT : HistorialRutinaDAO.FORMATO_CSV;
+
+        try {
+            historialDAO.exportarHistorial(Sesion.idUsuarioActivo, Sesion.nombreUsuarioActivo, archivo, formato);
+            mostrarAlertaInfo("Historial exportado", "Tu historial se guardó correctamente.");
+        } catch (HistorialVacioException e) {
+            mostrarAlertaInfo("Sin historial", e.getMessage());
+        } catch (IOException e) {
+            mostrarAlertaError("Error al guardar", "No se pudo escribir el archivo. Revisa que no esté abierto en otro programa y que tengas permiso en esa carpeta.");
+        } catch (SQLException e) {
+            mostrarAlertaError("Error de base de datos", "No se pudo leer tu historial.");
+        }
+    }
+
+    private void mostrarAlertaInfo(String titulo, String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
     }
     
     // logica para el calendario dinamico

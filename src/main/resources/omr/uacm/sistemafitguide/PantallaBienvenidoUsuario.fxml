@@ -157,6 +157,10 @@
                               <Insets bottom="15.0" top="15.0" />
                            </VBox.margin>
                         </Button>
+
+                        <Button mnemonicParsing="false" onAction="#accionExportarHistorial" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #2D5A27; -fx-text-fill: white; -fx-background-radius: 30; -fx-font-weight: bold; -fx-font-size: 13px;" text="EXPORTAR HISTORIAL">
+                           <cursor><Cursor fx:constant="HAND" /></cursor>
+                        </Button>
                      </children>
                   </VBox>
                </children>

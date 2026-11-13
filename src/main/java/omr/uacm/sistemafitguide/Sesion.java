@@ -20,5 +20,8 @@ public class Sesion {
         nombreUsuarioActivo = "";
         idCoachActivo = -1;
         nombreCoachActivo = "";
+        // las rutinas en memoria pertenecen al usuario que cierra sesión
+        PantallaConfiguracionRutinaController.mapaRutinas.clear();
+        PantallaBienvenidoUsuarioController.rutinaConfigurada = false;
     }
 }

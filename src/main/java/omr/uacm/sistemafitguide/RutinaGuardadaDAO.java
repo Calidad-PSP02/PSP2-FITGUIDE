@@ -47,6 +47,10 @@ public class RutinaGuardadaDAO {
 
     // carga todas las rutinas del usuario y las mete en el mapaRutinas
     public void cargarRutinasUsuario(int idUsuario) {
+        // se limpia el mapa para no mezclar rutinas de otro usuario
+        PantallaConfiguracionRutinaController.mapaRutinas.clear();
+        PantallaBienvenidoUsuarioController.rutinaConfigurada = false;
+
         String sql = "SELECT * FROM rutinas_guardadas WHERE id_usuario = ?;";
 
         try (Connection conn = ConexionDB.conectar();
@@ -78,6 +82,9 @@ public class RutinaGuardadaDAO {
         } catch (SQLException e) {
             System.err.println("Error al cargar rutinas: " + e.getMessage());
         }
+        // solo se puede entrenar si este usuario ya tiene rutinas guardadas
+        PantallaBienvenidoUsuarioController.rutinaConfigurada =
+            !PantallaConfiguracionRutinaController.mapaRutinas.isEmpty();
     }
 
     //  utilidades JSON manual

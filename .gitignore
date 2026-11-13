@@ -1,0 +1,11 @@
+/target/
+/.idea/
+01-DescripcionProblema.md
+02-DocumentoRequisitos.md
+03-DisenioConceptual.md
+04-GuiaEstilosProgramacion.md
+05-ChecklistDiseno_PSP2.md
+06-ChecklistCodigo_PSP2.md
+07-DocumentacionTecnica_Herramientas_Instrucciones.md
+SistemaFitGuide.iml
+.gitignore

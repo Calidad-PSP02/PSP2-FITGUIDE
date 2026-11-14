@@ -1,10 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 
+        /*
+         * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+         * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
+*/
 package omr.uacm.sistemafitguide;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -41,7 +40,7 @@ public class PantallaEjecucionController implements Initializable {
 
     private int repeticionesObjetivo = 15;
     private Timeline cronometroEjercicio;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         if (!validarInyeccionesFXML()) {
@@ -63,7 +62,7 @@ public class PantallaEjecucionController implements Initializable {
 
         cargarVideoDinamico();
         cronometroEjercicio = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-        GestionRutina.getInstance().sumarSegundo();
+            GestionRutina.getInstance().sumarSegundo();
         }));
         cronometroEjercicio.setCycleCount(Timeline.INDEFINITE);
         cronometroEjercicio.play();
@@ -85,7 +84,7 @@ public class PantallaEjecucionController implements Initializable {
             lblInstrucciones.setText(ej.getIntrucciones());
 
             int repsAsignadas = ej.getRepeticionesObjetivo(); // Valor base por defecto
-            
+
             String musculoEnEjecucion = gestion.getMusculoSeleccionado();
 
             if (musculoEnEjecucion != null) {
@@ -101,19 +100,19 @@ public class PantallaEjecucionController implements Initializable {
                 }
             }
 
-            this.repeticionesObjetivo = repsAsignadas; 
-            
+            this.repeticionesObjetivo = repsAsignadas;
+
 
             double pesoExtra = gestion.getPesoExtraKg();
             if (pesoExtra > 0) {
-                 // formatemos el peso para quitar el .0 si es entero 
-                 String formatoPeso = (pesoExtra == Math.floor(pesoExtra)) 
-                                      ? String.valueOf((int) pesoExtra) 
-                                      : String.valueOf(pesoExtra);
-                 
-                 lblMeta.setText("Meta: " + this.repeticionesObjetivo + " Reps con " + formatoPeso + " kg");
+                // formatemos el peso para quitar el .0 si es entero
+                String formatoPeso = (pesoExtra == Math.floor(pesoExtra))
+                        ? String.valueOf((int) pesoExtra)
+                        : String.valueOf(pesoExtra);
+
+                lblMeta.setText("Meta: " + this.repeticionesObjetivo + " Reps con " + formatoPeso + " kg");
             } else {
-                 lblMeta.setText("Meta: " + this.repeticionesObjetivo + " Repeticiones");
+                lblMeta.setText("Meta: " + this.repeticionesObjetivo + " Repeticiones");
             }
 
             // cargar gif
@@ -139,7 +138,7 @@ public class PantallaEjecucionController implements Initializable {
         }
     }
 
-        @FXML
+    @FXML
     public void registrarYContinuar() {
         // determinamos cuantas reps 
         int reps = repeticionesObjetivo;
@@ -169,10 +168,10 @@ public class PantallaEjecucionController implements Initializable {
             if (!encontrado) {
                 // si es la primera ves lo agregamos
                 HistorialEjercicio registro = new HistorialEjercicio(
-                    0,                          
-                    nombreEj,
-                    ejActual.getRepeticionesObjetivo(),
-                    reps
+                        0,
+                        nombreEj,
+                        ejActual.getRepeticionesObjetivo(),
+                        reps
                 );
                 PantallaResumenController.ejerciciosCompletados.add(registro);
             }
@@ -185,8 +184,8 @@ public class PantallaEjecucionController implements Initializable {
 
         // cuando pasemos al reumen lo limpia
         if (siguientePantalla.equals("PantallaResumen")) {
-            PantallaResumenController.tiempoTotalSegundos = 
-                GestionRutina.getInstance().getSegundosTranscurridos();
+            PantallaResumenController.tiempoTotalSegundos =
+                    GestionRutina.getInstance().getSegundosTranscurridos();
         }
 
         try {
@@ -201,12 +200,12 @@ public class PantallaEjecucionController implements Initializable {
     public void mostrarInfoEjercicio() {
         GestionRutina gestion = GestionRutina.getInstance();
         Ejercicio actual = gestion.getEjercicioActualData();
-        
+
         if (actual == null) return;
-        
+
         String nombre = actual.getNombre();
-        String info = "Trabajas múltiples grupos musculares y mejoras tu resistencia."; 
-        
+        String info = "Trabajas múltiples grupos musculares y mejoras tu resistencia.";
+
         switch (nombre) {
             case "Flexiones en pared": info = "Enfocado en el pecho, la parte frontal del hombro y los tríceps."; break;
             case "Flexiones cobra": info = "Trabajas tríceps, hombros, espalda baja y estiras el abdomen."; break;
@@ -224,7 +223,7 @@ public class PantallaEjecucionController implements Initializable {
             case "Sentadilla": info = "Fortaleces cuádriceps (muslos), glúteos e isquiotibiales."; break;
             case "Zancadas": info = "Trabajas cuádriceps, glúteos y mejoras tu equilibrio general."; break;
         }
-        
+
         lblInfoMensaje.setText(info);
         panelInfoEjercicio.setVisible(true);
     }

@@ -18,11 +18,11 @@ public class CoachDAO {
         String sql = "INSERT INTO coaches (nombre_coach, contrasena, especialidad) VALUES (?, ?, ?);";
         try (Connection conn = ConexionDB.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            
+
             pstmt.setString(1, coach.getNombreCoach());
             pstmt.setString(2, coach.getContrasena());
             pstmt.setString(3, coach.getEspecialidad());
-            
+
             return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Error al registrar coach en BD: " + e.getMessage());
@@ -34,10 +34,10 @@ public class CoachDAO {
         String sql = "SELECT id_coach FROM coaches WHERE nombre_coach = ? AND contrasena = ?;";
         try (Connection conn = ConexionDB.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            
+
             pstmt.setString(1, nombreCoach);
             pstmt.setString(2, contrasena);
-            
+
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     return rs.getInt("id_coach");
@@ -49,3 +49,4 @@ public class CoachDAO {
         return -1;
     }
 }
+

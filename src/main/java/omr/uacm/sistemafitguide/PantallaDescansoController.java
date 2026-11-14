@@ -25,7 +25,7 @@ import javafx.util.Duration;
 /**
  * FXML Controller class
  *
- * @author MiguelDiaz 
+ * @author MiguelDiaz
  */
 public class PantallaDescansoController implements Initializable {
 
@@ -44,11 +44,11 @@ public class PantallaDescansoController implements Initializable {
     @FXML private Label lblProgresoTexto;
     @FXML private ProgressBar barraRutina;
 
-  
-    public static int tiempoDescansoPersonalizado = 35; 
+
+    public static int tiempoDescansoPersonalizado = 35;
     private int tiempoTotalDescanso;
     private int tiempoRestante;
-    
+
     private Timeline timeline;
     private boolean estaPausado = false;
     private double circunferencia;
@@ -87,7 +87,7 @@ public class PantallaDescansoController implements Initializable {
             if (circuloProgreso != null) {
                 circuloProgreso.setStrokeDashOffset(-circunferencia * (1 - proporcion));
             }
-         
+
             if (barraProgreso != null) barraProgreso.setProgress(proporcion);
 
             if (tiempoRestante <= 0) {
@@ -101,74 +101,74 @@ public class PantallaDescansoController implements Initializable {
     }
 
     private void cargarPreviewSiguienteEjercicio() {
-    GestionRutina gestion = GestionRutina.getInstance();
-    
-   
-    if (lblSeries != null) {
-        lblSeries.setText(String.valueOf(gestion.getSeriesTotales()));
-    }
+        GestionRutina gestion = GestionRutina.getInstance();
 
-    Ejercicio ejSiguiente = gestion.getEjercicioActualData();
 
-    if (ejSiguiente != null) {
-        String nombreEj = ejSiguiente.getNombre();
-        if (lblSiguienteNombre != null) lblSiguienteNombre.setText(nombreEj);
-
-        // repeticiones del siguiente ejercicio
-        if (lblReps != null) {
-            String llaveCompuesta = gestion.getLlaveRutina();
-            Rutina rutinaActiva = PantallaConfiguracionRutinaController.mapaRutinas.get(llaveCompuesta);
-            boolean repeticionAsignada = false;
-
-            if (rutinaActiva != null && rutinaActiva.getMapaRepeticiones().containsKey(nombreEj)) {
-                lblReps.setText(String.valueOf(rutinaActiva.getMapaRepeticiones().get(nombreEj)));
-                repeticionAsignada = true;
-            }
-            if (!repeticionAsignada) {
-                lblReps.setText(String.valueOf(ejSiguiente.getRepeticionesObjetivo()));
-            }
+        if (lblSeries != null) {
+            lblSeries.setText(String.valueOf(gestion.getSeriesTotales()));
         }
 
-        // imagen del siguiente ejercicio
-        String rutaImagen = ejSiguiente.getRutaImagen();
-        try {
-            URL resource = null;
-            if (rutaImagen != null && !rutaImagen.trim().isEmpty()) {
-                if (!rutaImagen.startsWith("/")) rutaImagen = "/" + rutaImagen;
-                resource = getClass().getResource(rutaImagen);
-            }
-            if (resource == null) {
-                resource = getClass().getResource("/omr/uacm/sistemafitguide/imagenes/Logo ajolote.png");
-            }
-            if (resource != null && imgSiguiente != null) {
-                imgSiguiente.setImage(new Image(resource.toExternalForm()));
-                Rectangle clip = new Rectangle(260.0, 200.0);
-                clip.setArcWidth(30);
-                clip.setArcHeight(30);
-                imgSiguiente.setClip(clip);
-            }
-        } catch (Exception ex) {
-            System.err.println("Error carga de imagen: " + ex.getMessage());
-        }
+        Ejercicio ejSiguiente = gestion.getEjercicioActualData();
 
-    } else {
-        if (lblSiguienteNombre != null) lblSiguienteNombre.setText("¡Último esfuerzo!");
-        if (imgSiguiente != null) imgSiguiente.setImage(null);
-        if (lblReps != null) lblReps.setText("-");
+        if (ejSiguiente != null) {
+            String nombreEj = ejSiguiente.getNombre();
+            if (lblSiguienteNombre != null) lblSiguienteNombre.setText(nombreEj);
+
+            // repeticiones del siguiente ejercicio
+            if (lblReps != null) {
+                String llaveCompuesta = gestion.getLlaveRutina();
+                Rutina rutinaActiva = PantallaConfiguracionRutinaController.mapaRutinas.get(llaveCompuesta);
+                boolean repeticionAsignada = false;
+
+                if (rutinaActiva != null && rutinaActiva.getMapaRepeticiones().containsKey(nombreEj)) {
+                    lblReps.setText(String.valueOf(rutinaActiva.getMapaRepeticiones().get(nombreEj)));
+                    repeticionAsignada = true;
+                }
+                if (!repeticionAsignada) {
+                    lblReps.setText(String.valueOf(ejSiguiente.getRepeticionesObjetivo()));
+                }
+            }
+
+            // imagen del siguiente ejercicio
+            String rutaImagen = ejSiguiente.getRutaImagen();
+            try {
+                URL resource = null;
+                if (rutaImagen != null && !rutaImagen.trim().isEmpty()) {
+                    if (!rutaImagen.startsWith("/")) rutaImagen = "/" + rutaImagen;
+                    resource = getClass().getResource(rutaImagen);
+                }
+                if (resource == null) {
+                    resource = getClass().getResource("/omr/uacm/sistemafitguide/imagenes/Logo ajolote.png");
+                }
+                if (resource != null && imgSiguiente != null) {
+                    imgSiguiente.setImage(new Image(resource.toExternalForm()));
+                    Rectangle clip = new Rectangle(260.0, 200.0);
+                    clip.setArcWidth(30);
+                    clip.setArcHeight(30);
+                    imgSiguiente.setClip(clip);
+                }
+            } catch (Exception ex) {
+                System.err.println("Error carga de imagen: " + ex.getMessage());
+            }
+
+        } else {
+            if (lblSiguienteNombre != null) lblSiguienteNombre.setText("¡Último esfuerzo!");
+            if (imgSiguiente != null) imgSiguiente.setImage(null);
+            if (lblReps != null) lblReps.setText("-");
+        }
     }
-}
 
     private void actualizarProgresoRutina() {
-    GestionRutina gestion = GestionRutina.getInstance();
-    int actual = gestion.getEjercicioActual();
-    int total = gestion.getTotalEjercicios();
+        GestionRutina gestion = GestionRutina.getInstance();
+        int actual = gestion.getEjercicioActual();
+        int total = gestion.getTotalEjercicios();
 
-    if (lblProgresoTexto != null) lblProgresoTexto.setText(actual + " / " + total);
-    if (barraRutina != null && total > 0) barraRutina.setProgress((double) actual / total);
-}
+        if (lblProgresoTexto != null) lblProgresoTexto.setText(actual + " / " + total);
+        if (barraRutina != null && total > 0) barraRutina.setProgress((double) actual / total);
+    }
 
     @FXML
-    public void pausarReanudar() { 
+    public void pausarReanudar() {
         if (timeline == null) return;
         if (estaPausado) {
             timeline.play();
@@ -179,7 +179,7 @@ public class PantallaDescansoController implements Initializable {
         }
     }
 
-        @FXML
+    @FXML
     public void saltarDescanso() {
         if (timeline != null) {
             // contramos los segundos que pasan antes de saltar
@@ -190,10 +190,10 @@ public class PantallaDescansoController implements Initializable {
     }
 
     private void irASiguienteEjercicio() {
-    try {
-        App.setRoot("PantallaEjecucion");
-    } catch (IOException e) {
-        System.err.println("Error al cargar Ejecucion: " + e.getMessage());
+        try {
+            App.setRoot("PantallaEjecucion");
+        } catch (IOException e) {
+            System.err.println("Error al cargar Ejecucion: " + e.getMessage());
+        }
     }
-}
 }

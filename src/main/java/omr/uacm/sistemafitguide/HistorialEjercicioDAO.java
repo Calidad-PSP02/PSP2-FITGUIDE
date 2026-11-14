@@ -14,27 +14,27 @@ import java.util.List;
  */
 public class HistorialEjercicioDAO {
 
-   //guardmaos la lista completa de los ejercicios
+    //guardmaos la lista completa de los ejercicios
     public void guardarListaEjercicios(List<HistorialEjercicio> lista) {
         String sql = "INSERT INTO historial_ejercicios (id_historial, nombre_ejercicio, reps_objetivo, reps_reales) VALUES (?, ?, ?, ?);";
-        
+
         try (Connection conn = ConexionDB.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            
+
             conn.setAutoCommit(false);
-            
+
             for (HistorialEjercicio ej : lista) {
                 pstmt.setInt(1, ej.getIdHistorial());
                 pstmt.setString(2, ej.getNombreEjercicio());
                 pstmt.setInt(3, ej.getRepsObjetivo());
                 pstmt.setInt(4, ej.getRepsReales());
-                pstmt.addBatch(); 
+                pstmt.addBatch();
             }
-            
+
             pstmt.executeBatch(); // ejecutamos todo el lote de golpes
             conn.commit();        // guardamos los cambios de forma permanente
             System.out.println("Desglose de ejercicios guardado exitosamente.");
-            
+
         } catch (SQLException e) {
             System.err.println("Error al guardar el desglose de ejercicios: " + e.getMessage());
         }

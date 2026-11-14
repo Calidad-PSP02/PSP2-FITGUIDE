@@ -46,13 +46,13 @@ public class CoachPanelController implements Initializable {
     @FXML private HBox BtnVerEstadisticas;
 
     private static final List<String> CONSEJOS = List.of(
-        "\"El progreso no siempre se trata de hacer más, sino de ser más constante.\"",
-        "\"Cada repetición que completas hoy es una inversión en quien serás mañana.\"",
-        "\"La disciplina vence al talento cuando el talento no se está esforzando.\"",
-        "\"Bebe al menos 500 ml de agua antes de entrenar y 250 ml cada 20 minutos.\"",
-        "\"Exhala al hacer el esfuerzo, inhala al relajar. Nunca contengas el aliento.\"",
-        "\"No necesitas ser perfecto, solo constante. Cada esfuerzo cuenta.\"",
-        "\"5 minutos de calentamiento reducen el riesgo de lesión en un 50%.\""
+            "\"El progreso no siempre se trata de hacer más, sino de ser más constante.\"",
+            "\"Cada repetición que completas hoy es una inversión en quien serás mañana.\"",
+            "\"La disciplina vence al talento cuando el talento no se está esforzando.\"",
+            "\"Bebe al menos 500 ml de agua antes de entrenar y 250 ml cada 20 minutos.\"",
+            "\"Exhala al hacer el esfuerzo, inhala al relajar. Nunca contengas el aliento.\"",
+            "\"No necesitas ser perfecto, solo constante. Cada esfuerzo cuenta.\"",
+            "\"5 minutos de calentamiento reducen el riesgo de lesión en un 50%.\""
     );
     private int indiceConsejoActual = 0;
     private Timeline timelineConsejos;
@@ -71,10 +71,10 @@ public class CoachPanelController implements Initializable {
         try (Connection con = abrirConexion()) {
 
             try (Statement st = con.createStatement();
-                 ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM historial_ejercicios")) {
+                 ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM ejercicios_catalogo")) {
                 if (rs.next() && LblNumEjercicios != null)
                     LblNumEjercicios.setText(String.valueOf(rs.getInt(1)));
-            } catch (SQLException e) { 
+            } catch (SQLException e) {
 
             }
 
@@ -104,10 +104,10 @@ public class CoachPanelController implements Initializable {
         actualizarConsejoConFade(CONSEJOS.get(0));
 
         timelineConsejos = new Timeline(
-            new KeyFrame(Duration.seconds(10), e -> {
-                indiceConsejoActual = (indiceConsejoActual + 1) % CONSEJOS.size();
-                actualizarConsejoConFade(CONSEJOS.get(indiceConsejoActual));
-            })
+                new KeyFrame(Duration.seconds(10), e -> {
+                    indiceConsejoActual = (indiceConsejoActual + 1) % CONSEJOS.size();
+                    actualizarConsejoConFade(CONSEJOS.get(indiceConsejoActual));
+                })
         );
         timelineConsejos.setCycleCount(Timeline.INDEFINITE);
         timelineConsejos.play();
@@ -149,7 +149,7 @@ public class CoachPanelController implements Initializable {
         if (boton == null) return;
         String base  = boton.getStyle();
         String hover = base.replace("-fx-background-color: #2a7a6a;",
-                                    "-fx-background-color: #1f6055;");
+                "-fx-background-color: #1f6055;");
         boton.setOnMouseEntered(e -> boton.setStyle(hover));
         boton.setOnMouseExited(e  -> boton.setStyle(base));
     }
@@ -157,19 +157,21 @@ public class CoachPanelController implements Initializable {
     @FXML
     private void HandleIrEjercicios() {
         detenerTimeline();
-        navegarA("PantallaEjercicios");
+        navegarA("PantallaCoachCatalogoEjercicios");
     }
 
     @FXML
     private void HandleAgregarEjercicios() {
         detenerTimeline();
-        navegarA("PantallaAgregarEjercicios");
+        PantallaCoachFormularioEjercicioController.modoEdicion = false;
+        PantallaCoachFormularioEjercicioController.ejercicioAEditar = null;
+        navegarA("PantallaCoachFormularioEjercicio");
     }
 
     @FXML
     private void HandleRevisarUsuarios() {
         detenerTimeline();
-        navegarA("PantallaUsuarios");
+        navegarA("PantallaCoachGestionRutinas");
     }
 
     @FXML
@@ -181,9 +183,10 @@ public class CoachPanelController implements Initializable {
     @FXML
     private void HandleCerrarSesion() {
         detenerTimeline();
+        Sesion.cerrarSesion();
         NombreCoach   = "Coach";
         IdCoachActual = -1;
-        navegarA("PantallaInicio"); 
+        navegarA("PantallaInicio");
     }
 
 
@@ -199,7 +202,7 @@ public class CoachPanelController implements Initializable {
         try {
             // Intentar con el paquete de tu proyecto
             java.net.URL fxmlUrl = getClass().getResource(
-                "/omr/uacm/sistemafitguide/" + fxmlName + ".fxml");
+                    "/omr/uacm/sistemafitguide/" + fxmlName + ".fxml");
 
             // Si no lo encuentra, buscar en el paquete raíz de resources
             if (fxmlUrl == null) {
@@ -208,8 +211,8 @@ public class CoachPanelController implements Initializable {
 
             if (fxmlUrl == null) {
                 mostrarAlerta("Error de navegación",
-                    "No se encontró el archivo: " + fxmlName + ".fxml\n" +
-                    "Verifica que esté en resources/omr/uacm/sistemafitguide/");
+                        "No se encontró el archivo: " + fxmlName + ".fxml\n" +
+                                "Verifica que esté en resources/omr/uacm/sistemafitguide/");
                 return;
             }
 
@@ -230,8 +233,8 @@ public class CoachPanelController implements Initializable {
 
     private javafx.stage.Stage obtenerStage() {
         javafx.scene.Node[] nodos = {
-            LblTituloCoach, LblNumEjercicios, LblNumUsuarios,
-            LblConsejoDia,  BtnCerrarSesion
+                LblTituloCoach, LblNumEjercicios, LblNumUsuarios,
+                LblConsejoDia,  BtnCerrarSesion
         };
         for (javafx.scene.Node nodo : nodos) {
             if (nodo != null && nodo.getScene() != null && nodo.getScene().getWindow() != null) {

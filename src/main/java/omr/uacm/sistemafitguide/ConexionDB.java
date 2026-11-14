@@ -14,7 +14,7 @@ import java.sql.Statement;
  * @author migue
  */
 public class ConexionDB {
-    
+
     private static final String URL = "jdbc:sqlite:fitguide.db";
 
     //conexion activa
@@ -57,7 +57,7 @@ public class ConexionDB {
                 + "reps_reales INTEGER NOT NULL, "
                 + "FOREIGN KEY (id_historial) REFERENCES historial_rutinas (id_historial) ON DELETE CASCADE"
                 + ");";
-        
+
         String tablaRutinasGuardadas = "CREATE TABLE IF NOT EXISTS rutinas_guardadas ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "id_usuario INTEGER NOT NULL, "
@@ -79,12 +79,28 @@ public class ConexionDB {
                 + "especialidad TEXT NOT NULL"
                 + ");";
 
+        String tablaEjerciciosCatalogo = "CREATE TABLE IF NOT EXISTS ejercicios_catalogo ("
+                + "id_ejercicio INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "nombre TEXT NOT NULL, "
+                + "zona_corporal TEXT NOT NULL, "
+                + "nivel TEXT NOT NULL, "
+                + "tipo_peso TEXT NOT NULL, "
+                + "repeticiones INTEGER NOT NULL DEFAULT 12, "
+                + "series INTEGER NOT NULL DEFAULT 3, "
+                + "duracion INTEGER NOT NULL DEFAULT 0, "
+                + "descanso INTEGER NOT NULL DEFAULT 30, "
+                + "descripcion TEXT, "
+                + "url_imagen TEXT, "
+                + "url_video TEXT"
+                + ");";
+
         try (Connection conn = conectar(); Statement stmt = conn.createStatement()) {
             stmt.execute(tablaUsuarios);
             stmt.execute(tablaHistorialRutinas);
             stmt.execute(tablaHistorialEjercicios);
             stmt.execute(tablaRutinasGuardadas);
             stmt.execute(tablaCoaches);
+            stmt.execute(tablaEjerciciosCatalogo);
             System.out.println("Base de datos SQLite verificada e inicializada correctamente.");
         } catch (SQLException e) {
             System.err.println("Error crítico al inicializar la base de datos local: " + e.getMessage());

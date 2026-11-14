@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -17,11 +18,11 @@ public class Usuario {
     private String fechaNacimiento;
     private String genero;
 
-    // constructor vacío 
+    // constructor vacío
     public Usuario() {
     }
 
-    // constructor para registrar un usuario 
+    // constructor para registrar un usuario
     public Usuario(String nombreUsuario, String contrasena, double peso, double altura, String fechaNacimiento, String genero) {
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
@@ -53,3 +54,4 @@ public class Usuario {
     public String getGenero() { return genero; }
     public void setGenero(String genero) { this.genero = genero; }
 }
+

@@ -1,7 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+         * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+         * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+         */
 
 package omr.uacm.sistemafitguide;
 
@@ -45,11 +45,11 @@ public class PantallaListaEjerciciosController implements Initializable {
 
 
     private static final String ESTILO_TAB_ACTIVO =
-        "-fx-background-color: white; -fx-text-fill: #2E7D32; " +
-        "-fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 20; -fx-cursor: hand;";
+            "-fx-background-color: white; -fx-text-fill: #2E7D32; " +
+                    "-fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 20; -fx-cursor: hand;";
     private static final String ESTILO_TAB_INACTIVO =
-        "-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; " +
-        "-fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 20; -fx-cursor: hand;";
+            "-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; " +
+                    "-fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 20; -fx-cursor: hand;";
 
 
     @Override
@@ -93,7 +93,7 @@ public class PantallaListaEjerciciosController implements Initializable {
                 // calcular numero de ejercicios base
                 boolean esMancuerna = modalidad.equals("Peso Extra");
                 List<Ejercicio> base = CatalogoEjercicios.obtenerRutina(
-                    musculo, nivel, esMancuerna
+                        musculo, nivel, esMancuerna
                 );
                 int numEjercicios = (base != null) ? base.size() : 0;
 
@@ -148,15 +148,15 @@ public class PantallaListaEjerciciosController implements Initializable {
 
         Label chipNivel = new Label(nivel.toUpperCase());
         chipNivel.setStyle("-fx-background-color: " + colorNivel + "; -fx-text-fill: white; " +
-                           "-fx-font-size: 11px; -fx-font-weight: bold; " +
-                           "-fx-background-radius: 6; -fx-padding: 3 10;");
+                "-fx-font-size: 11px; -fx-font-weight: bold; " +
+                "-fx-background-radius: 6; -fx-padding: 3 10;");
 
         javafx.scene.layout.StackPane imgPane = new javafx.scene.layout.StackPane(img, chipNivel);
         javafx.scene.layout.StackPane.setAlignment(chipNivel, javafx.geometry.Pos.TOP_LEFT);
         javafx.scene.layout.StackPane.setMargin(chipNivel, new javafx.geometry.Insets(8, 0, 0, 8));
         imgPane.setStyle("-fx-background-color: #E0E0E0; -fx-background-radius: 14 14 0 0;");
 
-       
+
         VBox cuerpo = new VBox(8);
         cuerpo.setStyle("-fx-padding: 12 14 14 14;");
 
@@ -166,17 +166,17 @@ public class PantallaListaEjerciciosController implements Initializable {
         boolean esPesoExtra = modalidad.equals("Peso Extra");
         Label chipModal = new Label(esPesoExtra ? " Peso Extra" : " Peso Propio");
         chipModal.setStyle("-fx-background-color: " + (esPesoExtra ? "#FFEBEE" : "#E8F5E9") + "; " +
-                           "-fx-text-fill: " + (esPesoExtra ? "#C62828" : "#2E7D32") + "; " +
-                           "-fx-font-size: 11px; -fx-font-weight: bold; " +
-                           "-fx-background-radius: 8; -fx-padding: 3 10;");
+                "-fx-text-fill: " + (esPesoExtra ? "#C62828" : "#2E7D32") + "; " +
+                "-fx-font-size: 11px; -fx-font-weight: bold; " +
+                "-fx-background-radius: 8; -fx-padding: 3 10;");
 
         // Stats: series · ejercicios · descanso
         HBox stats = new HBox(10);
         stats.setAlignment(Pos.CENTER_LEFT);
         stats.getChildren().addAll(
-            crearStat(String.valueOf(r.getSeries()), "series"),
-            crearStat(String.valueOf(numEjercicios), "ejercicios"),
-            crearStat(r.getTiempoDescanso() + "s", "descanso")
+                crearStat(String.valueOf(r.getSeries()), "series"),
+                crearStat(String.valueOf(numEjercicios), "ejercicios"),
+                crearStat(r.getTiempoDescanso() + "s", "descanso")
         );
 
         // Botón iniciar
@@ -184,8 +184,8 @@ public class PantallaListaEjerciciosController implements Initializable {
         btnIniciar.setPrefHeight(36.0);
         btnIniciar.setPrefWidth(210.0);
         btnIniciar.setStyle("-fx-background-color: " + colorNivel + "; -fx-text-fill: white; " +
-                            "-fx-font-weight: bold; -fx-font-size: 13px; " +
-                            "-fx-background-radius: 10; -fx-cursor: hand;");
+                "-fx-font-weight: bold; -fx-font-size: 13px; " +
+                "-fx-background-radius: 10; -fx-cursor: hand;");
         final String llaveF = llave;
         btnIniciar.setOnAction(e -> iniciarRutina(musculo, nivel, modalidad, llaveF));
 
@@ -196,7 +196,7 @@ public class PantallaListaEjerciciosController implements Initializable {
         card.setMinWidth(210.0);
         card.setMaxWidth(210.0);
         card.setStyle("-fx-background-color: white; -fx-background-radius: 16; " +
-                      "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 4);");
+                "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 4);");
         card.getChildren().addAll(imgPane, cuerpo);
 
         return card;

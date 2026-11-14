@@ -36,13 +36,13 @@
                      </VBox.margin>
                   </Label>
                   <GridPane fx:id="gridEjercicios" alignment="CENTER">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                   </GridPane>
                   <Label fx:id="lblTiempoTotal" alignment="TOP_CENTER" text="Tiempo total: 00:00 min.!" textFill="#fcfcfc">
                      <font>
@@ -57,7 +57,7 @@
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@imagenes/boton%20de%20regreso%20bienbenida.png" />
+                              <Image url="@imagenes/boton de regreso bienbenida.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -66,7 +66,7 @@
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@imagenes/Boton%20retorno.png" />
+                              <Image url="@imagenes/Boton retorno.png" />
                            </image>
                         </ImageView>
                      </graphic>

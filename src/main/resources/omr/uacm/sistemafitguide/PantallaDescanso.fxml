@@ -52,7 +52,7 @@
                         <graphic>
                             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="@imagenes/boton%20pausa%202.png" />
+                                    <Image url="@imagenes/boton pausa 2.png" />
                                 </image>
                             </ImageView>
                         </graphic>
@@ -76,7 +76,7 @@
             <StackPane maxHeight="200.0" maxWidth="260.0" prefHeight="200.0" prefWidth="260.0" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15px;">
                 <children>
                     <ImageView fx:id="imgSiguiente" fitHeight="200.0" fitWidth="260.0" pickOnBounds="true" StackPane.alignment="CENTER" />
-                    
+
                     <Label style="-fx-background-color: #25AD76; -fx-text-fill: white; -fx-font-size: 11px; -fx-font-weight: bold; -fx-background-radius: 6px; -fx-padding: 3px 10px;" text="SIGUIENTE" StackPane.alignment="TOP_LEFT">
                         <StackPane.margin>
                             <Insets left="10.0" top="10.0" />

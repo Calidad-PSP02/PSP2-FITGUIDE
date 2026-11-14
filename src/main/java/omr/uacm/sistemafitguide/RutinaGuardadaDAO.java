@@ -1,7 +1,8 @@
+
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+*/
 package omr.uacm.sistemafitguide;
 
 import java.sql.*;
@@ -20,13 +21,13 @@ public class RutinaGuardadaDAO {
         String repJson = mapaAJson(r.getMapaRepeticiones());
 
         String sql = "INSERT INTO rutinas_guardadas "
-            + "(id_usuario, grupo_muscular, nivel, tipo_peso, series, tiempo_descanso, repeticiones_json, peso_extra_kg) "
-            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?) "
-            + "ON CONFLICT(id_usuario, grupo_muscular, nivel, tipo_peso) DO UPDATE SET "
-            + "series = excluded.series, "
-            + "tiempo_descanso = excluded.tiempo_descanso, "
-            + "repeticiones_json = excluded.repeticiones_json, "
-            + "peso_extra_kg = excluded.peso_extra_kg;";
+                + "(id_usuario, grupo_muscular, nivel, tipo_peso, series, tiempo_descanso, repeticiones_json, peso_extra_kg) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?) "
+                + "ON CONFLICT(id_usuario, grupo_muscular, nivel, tipo_peso) DO UPDATE SET "
+                + "series = excluded.series, "
+                + "tiempo_descanso = excluded.tiempo_descanso, "
+                + "repeticiones_json = excluded.repeticiones_json, "
+                + "peso_extra_kg = excluded.peso_extra_kg;";
 
         try (Connection conn = ConexionDB.conectar();
              PreparedStatement ps = conn.prepareStatement(sql)) {

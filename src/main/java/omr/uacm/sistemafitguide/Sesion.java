@@ -14,7 +14,7 @@ public class Sesion {
     public static String nombreUsuarioActivo = "";
     public static int idCoachActivo = -1;
     public static String nombreCoachActivo = "";
-    
+
     public static void cerrarSesion() {
         idUsuarioActivo = -1;
         nombreUsuarioActivo = "";

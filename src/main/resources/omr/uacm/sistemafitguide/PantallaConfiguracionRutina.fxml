@@ -86,22 +86,22 @@
                            </VBox>
 
                            <VBox fx:id="paso4Ejercicios" alignment="CENTER" spacing="10.0" visible="false">
-                                <children>
-                                   <Label text="COLOCA LAS REPETICIONES QUE GUSTES HACER">
-                                      <font><Font name="System Bold" size="18.0" /></font>
-                                   </Label>
+                              <children>
+                                 <Label text="COLOCA LAS REPETICIONES QUE GUSTES HACER">
+                                    <font><Font name="System Bold" size="18.0" /></font>
+                                 </Label>
 
-                                   <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="240.0" prefWidth="800.0" style="-fx-background-color: transparent;">
-                                      <content>
-                                         <FlowPane fx:id="flowPaneEjercicios" alignment="TOP_CENTER" hgap="20.0" vgap="20.0" />
-                                      </content>
-                                   </ScrollPane>
-                                   <Button mnemonicParsing="false" onAction="#volverPaso3" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15; -fx-text-fill: #333333; -fx-padding: 10 20品" text="⬅ Volver al paso anterior">
-                                      <cursor><Cursor fx:constant="HAND" /></cursor>
-                                      <font><Font name="System Bold" size="14.0" /></font>
-                                   </Button>
-                                </children>
-                           </VBox> 
+                                 <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="240.0" prefWidth="800.0" style="-fx-background-color: transparent;">
+                                    <content>
+                                       <FlowPane fx:id="flowPaneEjercicios" alignment="TOP_CENTER" hgap="20.0" vgap="20.0" />
+                                    </content>
+                                 </ScrollPane>
+                                 <Button mnemonicParsing="false" onAction="#volverPaso3" style="-fx-background-color: #E0E0E0; -fx-background-radius: 15; -fx-text-fill: #333333; -fx-padding: 10 20品" text="⬅ Volver al paso anterior">
+                                    <cursor><Cursor fx:constant="HAND" /></cursor>
+                                    <font><Font name="System Bold" size="14.0" /></font>
+                                 </Button>
+                              </children>
+                           </VBox>
 
                            <VBox fx:id="paso5Descanso" alignment="CENTER" spacing="25.0" visible="false">
                               <Label text="¿CUÁNTOS SEGUNDOS DE DESCANSO NECESITAS ENTRE EJERCICIOS?"><font><Font name="System Bold" size="18.0" /></font></Label>

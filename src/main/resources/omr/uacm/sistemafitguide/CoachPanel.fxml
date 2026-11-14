@@ -24,10 +24,7 @@
                 <Insets top="16" right="24" bottom="20" left="24"/>
             </padding>
 
-            <!-- Fila 1: ícono + saludo + [BOTÓN EJERCICIOS] + cerrar sesión -->
             <HBox alignment="CENTER_LEFT" spacing="12">
-
-                <!-- Ícono de usuario -->
                 <StackPane style="-fx-background-color: #2a5555; -fx-background-radius: 50%;
                                   -fx-min-width: 36; -fx-min-height: 36;
                                   -fx-max-width: 36; -fx-max-height: 36;
@@ -35,14 +32,11 @@
                     <Label text="" style="-fx-font-size: 16px;"/>
                 </StackPane>
 
-                <!-- Saludo -->
                 <Label fx:id="LblTituloCoach" text="¡Hola, Coach!"
                        style="-fx-text-fill: #ffffff; -fx-font-size: 22px; -fx-font-weight: bold;"/>
 
-                <!-- Empuja el botón de ejercicios al centro-izquierda -->
                 <Region HBox.hgrow="ALWAYS"/>
 
-                <!-- ══ BOTÓN IR A EJERCICIOS (superior izquierdo relativo al centro) ══ -->
                 <Button fx:id="BtnIrEjercicios"
                         text="  Ver Ejercicios"
                         onMouseClicked="#HandleIrEjercicios"
@@ -55,10 +49,8 @@
                                -fx-cursor: hand;
                                -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.2),4,0,0,2);"/>
 
-                <!-- Separador visual pequeño -->
                 <Region prefWidth="8"/>
 
-                <!-- Cerrar sesión -->
                 <Button fx:id="BtnCerrarSesion"
                         text=" Cerrar Sesión"
                         onMouseClicked="#HandleCerrarSesion"
@@ -72,13 +64,12 @@
                                -fx-cursor: hand;"/>
             </HBox>
 
-            <!-- Stats row -->
+            <!-- Stats -->
             <HBox spacing="16" style="-fx-alignment: center-left;">
                 <padding>
                     <Insets top="18" right="0" bottom="0" left="0"/>
                 </padding>
 
-                <!-- Ejercicios Disponibles -->
                 <HBox spacing="12" alignment="CENTER_LEFT"
                       style="-fx-background-color: rgba(255,255,255,0.08);
                              -fx-background-radius: 14;
@@ -95,7 +86,6 @@
                     </VBox>
                 </HBox>
 
-                <!-- Usuarios Activos -->
                 <HBox spacing="12" alignment="CENTER_LEFT"
                       style="-fx-background-color: rgba(255,255,255,0.08);
                              -fx-background-radius: 14;
@@ -112,7 +102,6 @@
                     </VBox>
                 </HBox>
 
-                <!-- Sesiones esta semana -->
                 <HBox spacing="12" alignment="CENTER_LEFT"
                       style="-fx-background-color: rgba(255,255,255,0.08);
                              -fx-background-radius: 14;
@@ -132,7 +121,6 @@
         </VBox>
     </top>
 
-    <!-- ========== CONTENIDO PRINCIPAL ========== -->
     <center>
         <ScrollPane fitToWidth="true"
                     style="-fx-background-color: transparent; -fx-background: transparent;
@@ -143,10 +131,10 @@
                     <Insets top="20" right="24" bottom="24" left="24"/>
                 </padding>
 
-                <!-- ===== COLUMNA IZQUIERDA ===== -->
+                <!-- COLUMNA IZQUIERDA -->
                 <VBox spacing="16" minWidth="260" prefWidth="280" maxWidth="320">
 
-                    <!-- Esta semana (calendario) -->
+                    <!-- Calendario estático -->
                     <VBox spacing="12"
                           style="-fx-background-color: #ffffff; -fx-background-radius: 16;
                                  -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),10,0,0,2);">
@@ -202,17 +190,34 @@
                         </HBox>
                     </VBox>
 
-                    <!-- Consejo del día -->
+                    <!-- CONSEJO DEL DÍA + BOTÓN EDITAR -->
                     <VBox spacing="10"
                           style="-fx-background-color: linear-gradient(to bottom right, #1a3c3c, #0d2828);
                                  -fx-background-radius: 16;
                                  -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.2),12,0,0,3);">
                         <padding><Insets top="18" right="18" bottom="18" left="18"/></padding>
+
                         <HBox spacing="8" alignment="CENTER_LEFT">
                             <Label text="" style="-fx-font-size: 16px;"/>
                             <Label text="Consejo del día"
-                                   style="-fx-text-fill: #4ecdc4; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                                   style="-fx-text-fill: #4ecdc4; -fx-font-size: 14px; -fx-font-weight: bold;"
+                                   HBox.hgrow="ALWAYS"/>
+
+                            <Button fx:id="BtnEditarConsejo"
+                                    text="Editar"
+                                    onAction="#HandleEditarConsejo"
+                                    style="-fx-background-color: rgba(78,205,196,0.18);
+                                           -fx-text-fill: #4ecdc4;
+                                           -fx-font-size: 11px;
+                                           -fx-font-weight: bold;
+                                           -fx-background-radius: 12;
+                                           -fx-padding: 4 12 4 12;
+                                           -fx-cursor: hand;
+                                           -fx-border-color: #4ecdc4;
+                                           -fx-border-radius: 12;
+                                           -fx-border-width: 1;"/>
                         </HBox>
+
                         <Label fx:id="LblConsejoDia"
                                text="&quot;El progreso no siempre se trata de hacer más, sino de ser más constante.&quot;"
                                style="-fx-text-fill: #e0f0f0; -fx-font-size: 13px;
@@ -220,7 +225,7 @@
                                wrapText="true"/>
                     </VBox>
 
-                    <!-- Panel del Coach (menú) -->
+                    <!-- Menú Panel del Coach -->
                     <VBox spacing="8"
                           style="-fx-background-color: #ffffff; -fx-background-radius: 16;
                                  -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),10,0,0,2);">
@@ -267,7 +272,7 @@
                     </VBox>
                 </VBox>
 
-                <!-- ===== COLUMNA DERECHA: Consejos del Coach ===== -->
+                <!-- COLUMNA DERECHA: Consejos del Coach -->
                 <VBox spacing="12" HBox.hgrow="ALWAYS">
                     <HBox spacing="8" alignment="CENTER_LEFT">
                         <Label text="" style="-fx-font-size: 16px;"/>
@@ -279,7 +284,6 @@
                         </VBox>
                     </HBox>
 
-                    <!-- Grid 2x3 de consejos -->
                     <GridPane hgap="14" vgap="14" style="-fx-padding: 4 0 0 0;">
                         <columnConstraints>
                             <ColumnConstraints hgrow="ALWAYS" percentWidth="50"/>
@@ -291,7 +295,7 @@
                             <RowConstraints vgrow="ALWAYS"/>
                         </rowConstraints>
 
-                        <!-- 1. Entrenamiento -->
+                        <!-- Tarjeta 1 -->
                         <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0"
                               style="-fx-background-color: #ffffff; -fx-background-radius: 16;
                                      -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),10,0,0,2);
@@ -311,7 +315,7 @@
                                    style="-fx-text-fill: #6a7a7a; -fx-font-size: 12px; -fx-line-spacing: 1;" wrapText="true"/>
                         </VBox>
 
-                        <!-- 2. Nutrición -->
+                        <!-- Tarjeta 2 -->
                         <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0"
                               style="-fx-background-color: #ffffff; -fx-background-radius: 16;
                                      -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),10,0,0,2);
@@ -323,7 +327,7 @@
                                 </StackPane>
                                 <Label text="Nutrición" style="-fx-background-color: #ebe0ff; -fx-text-fill: #6b3fa0; -fx-background-radius: 10; -fx-padding: 3 10 3 10; -fx-font-size: 11px; -fx-font-weight: bold;"/>
                                 <Region HBox.hgrow="ALWAYS"/>
-                                <Label text="" style="-fx-text-fill: #b0c0c0; -fx-font-size: 16px;"/>
+                                <Label text="›" style="-fx-text-fill: #b0c0c0; -fx-font-size: 16px;"/>
                             </HBox>
                             <Label text="Hidratación constante"
                                    style="-fx-text-fill: #1a2e2e; -fx-font-size: 14px; -fx-font-weight: bold;" wrapText="true"/>
@@ -331,7 +335,7 @@
                                    style="-fx-text-fill: #6a7a7a; -fx-font-size: 12px; -fx-line-spacing: 1;" wrapText="true"/>
                         </VBox>
 
-                        <!-- 3. Mentalidad -->
+                        <!-- Tarjeta 3 -->
                         <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="1"
                               style="-fx-background-color: #ffffff; -fx-background-radius: 16;
                                      -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),10,0,0,2);
@@ -343,7 +347,7 @@
                                 </StackPane>
                                 <Label text="Mentalidad" style="-fx-background-color: #d0e8ff; -fx-text-fill: #1a6bb5; -fx-background-radius: 10; -fx-padding: 3 10 3 10; -fx-font-size: 11px; -fx-font-weight: bold;"/>
                                 <Region HBox.hgrow="ALWAYS"/>
-                                <Label text="" style="-fx-text-fill: #b0c0c0; -fx-font-size: 16px;"/>
+                                <Label text="›" style="-fx-text-fill: #b0c0c0; -fx-font-size: 16px;"/>
                             </HBox>
                             <Label text="La constancia gana"
                                    style="-fx-text-fill: #1a2e2e; -fx-font-size: 14px; -fx-font-weight: bold;" wrapText="true"/>
@@ -351,7 +355,7 @@
                                    style="-fx-text-fill: #6a7a7a; -fx-font-size: 12px; -fx-line-spacing: 1;" wrapText="true"/>
                         </VBox>
 
-                        <!-- 4. Rendimiento -->
+                        <!-- Tarjeta 4 -->
                         <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="1"
                               style="-fx-background-color: #ffffff; -fx-background-radius: 16;
                                      -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),10,0,0,2);
@@ -371,7 +375,7 @@
                                    style="-fx-text-fill: #6a7a7a; -fx-font-size: 12px; -fx-line-spacing: 1;" wrapText="true"/>
                         </VBox>
 
-                        <!-- 5. Hábitos -->
+                        <!-- Tarjeta 5 -->
                         <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="2"
                               style="-fx-background-color: #ffffff; -fx-background-radius: 16;
                                      -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),10,0,0,2);
@@ -391,7 +395,7 @@
                                    style="-fx-text-fill: #6a7a7a; -fx-font-size: 12px; -fx-line-spacing: 1;" wrapText="true"/>
                         </VBox>
 
-                        <!-- 6. Progreso -->
+                        <!-- Tarjeta 6 -->
                         <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="2"
                               style="-fx-background-color: #ffffff; -fx-background-radius: 16;
                                      -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),10,0,0,2);

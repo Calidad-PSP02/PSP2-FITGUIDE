@@ -21,6 +21,7 @@
             <HBox alignment="CENTER" prefHeight="582.0" prefWidth="900.0" spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 25; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);">
                <children>
                   
+                  <!-- ========== COLUMNA IZQUIERDA ========== -->
                   <VBox alignment="CENTER" fillWidth="false" prefHeight="540.0" prefWidth="240.0" spacing="20.0" HBox.hgrow="ALWAYS">
                      <children>
                         
@@ -48,7 +49,7 @@
                               </Label>
                            </children>
                         </VBox>
-
+                        
                         <VBox alignment="TOP_CENTER" prefWidth="220.0" spacing="10.0">
                            <children>
                               <Label text="SALUD Y BIENESTAR" textFill="#4caf50">
@@ -73,7 +74,7 @@
                               </Label>
                            </children>
                         </VBox>
-
+                        
                         <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onAction="#accionCerrarSesion" style="-fx-background-color: transparent; -fx-border-color: #E53935; -fx-border-radius: 20; -fx-border-width: 2; -fx-text-fill: #E53935; -fx-padding: 8 20;" text="Cerrar Sesión">
                            <font><Font name="System Bold" size="13.0" /></font>
                            <cursor><Cursor fx:constant="HAND" /></cursor>
@@ -82,7 +83,8 @@
                      </children>
                      <padding><Insets left="15.0" /></padding>
                   </VBox>
-
+                  
+                  <!-- ========== COLUMNA CENTRAL ========== -->
                   <VBox alignment="TOP_CENTER" prefHeight="540.0" prefWidth="400.0" spacing="20.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Label alignment="CENTER" prefHeight="80.0" prefWidth="350.0" text="FITGUIDE" textFill="#1b4d1b">
@@ -100,9 +102,12 @@
                      </children>
                      <padding><Insets top="40.0" /></padding>
                   </VBox>
-
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="240.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                  
+                  <!-- ========== COLUMNA DERECHA ========== -->
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="240.0" spacing="15.0" HBox.hgrow="ALWAYS">
                      <children>
+                        
+                        <!-- Calendario -->
                         <GridPane fx:id="gridCalendario" alignment="CENTER" hgap="3.0" prefHeight="215.0" prefWidth="216.0" style="-fx-background-color: #E4F2E7; -fx-background-radius: 15; -fx-padding: 15;" vgap="3.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -147,14 +152,34 @@
                            <VBox.margin><Insets right="20.0" /></VBox.margin>
                         </GridPane>
                         
+                        <!-- Racha -->
                         <Label fx:id="lblRachaTexto" style="-fx-background-color: #E4F2E7; -fx-background-radius: 20; -fx-padding: 8 20; -fx-text-fill: #2E7D32;" text="0 DÍAS DE RACHA">
                            <font><Font name="System Bold" size="15.0" /></font>
                         </Label>
                         
+                        <!-- ========== IMC ========== -->
+                        <VBox alignment="CENTER" spacing="6.0" 
+                              style="-fx-background-color: #E4F2E7; -fx-background-radius: 15; -fx-padding: 12 18;">
+                           <children>
+                              <Label text="ÍNDICE DE MASA CORPORAL" textFill="#2E7D32">
+                                 <font><Font name="System Bold" size="11.0" /></font>
+                              </Label>
+                              <Label fx:id="lblIMCValor" text="IMC: --" textFill="#1B5E20">
+                                 <font><Font name="System Bold" size="22.0" /></font>
+                              </Label>
+                              <Label fx:id="lblIMCClasificacion" 
+                                     style="-fx-background-radius: 20; -fx-padding: 5 16;" 
+                                     text="Cargando...">
+                                 <font><Font name="System Bold" size="13.0" /></font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        
+                        <!-- Botón Personalizar -->
                         <Button mnemonicParsing="false" onAction="#accionConfigurarRutina" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 30; -fx-font-weight: bold; -fx-font-size: 13px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 8, 0, 0, 4);" text="PERSONALIZAR RUTINA">
                            <cursor><Cursor fx:constant="HAND" /></cursor>
                            <VBox.margin>
-                              <Insets bottom="15.0" top="15.0" />
+                              <Insets bottom="15.0" top="10.0" />
                            </VBox.margin>
                         </Button>
                      </children>
@@ -164,7 +189,8 @@
             </HBox>
          </children>
       </VBox>
-
+      
+      <!-- Panel de notificación -->
       <VBox fx:id="panelNotificacion" alignment="CENTER" style="-fx-background-color: rgba(0, 0, 0, 0.5);" visible="false">
          <children>
             <VBox alignment="CENTER" maxWidth="350.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 15, 0, 0, 5);">
@@ -183,6 +209,5 @@
             </VBox>
          </children>
       </VBox>
-
    </children>
 </StackPane>

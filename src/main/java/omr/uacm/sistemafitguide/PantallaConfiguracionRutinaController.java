@@ -39,7 +39,7 @@ public class PantallaConfiguracionRutinaController implements Initializable {
 
     @FXML private Label lblTituloConfig;
     @FXML private Button btnVolverBienvenida, btnConfigurarDescanso, btnIrBienvenida, btnIniciarRutinaFinal;
-    
+
     @FXML private HBox paso1Musculos;
     @FXML private VBox paso2Peso, paso3Nivel, paso4Ejercicios, paso5Descanso;
     @FXML private FlowPane flowPaneEjercicios;
@@ -52,18 +52,18 @@ public class PantallaConfiguracionRutinaController implements Initializable {
     private String grupoMuscularSeleccionado = "";
     private String tipoPesoSeleccionado      = "";
     private String nivelSeleccionado         = "";
-    
+
     private List<TextField> cajasTextoActuales = new ArrayList<>();
 
-    private VBox panelKilos = null;  
-    private double kilosSeleccionados = 0.0; 
-    
+    private VBox panelKilos = null;
+    private double kilosSeleccionados = 0.0;
 
-    private int seriesSeleccionadas = 2; 
+
+    private int seriesSeleccionadas = 2;
 
 
     public static Map<String, Rutina> mapaRutinas = new HashMap<>();
-    public static String ultimoGrupoSeleccionadoG = ""; 
+    public static String ultimoGrupoSeleccionadoG = "";
     public static int idUsuarioLogueado = 1;
 
     @Override
@@ -78,7 +78,7 @@ public class PantallaConfiguracionRutinaController implements Initializable {
 
         btnIrBienvenida.disableProperty().bind(txtDescanso.textProperty().isEmpty());
         btnIniciarRutinaFinal.disableProperty().bind(txtDescanso.textProperty().isEmpty());
-        
+
         txtDescanso.textProperty().addListener((obs, oldV, newV) -> {
             if (!newV.matches("\\d*")) txtDescanso.setText(newV.replaceAll("[^\\d]", ""));
         });
@@ -96,9 +96,9 @@ public class PantallaConfiguracionRutinaController implements Initializable {
 
     private void avanzarPaso2() {
         lblTituloConfig.setText("PASO 2: TIPO DE ENTRENAMIENTO (" + grupoMuscularSeleccionado.toUpperCase() + ")");
-        quitarPanelKilos(); 
+        quitarPanelKilos();
         mostrarPaso(paso2Peso);
-        
+
         switch (grupoMuscularSeleccionado.toLowerCase()) {
             case "brazo":
                 cargarImagen(imgPesoPropio, "/omr/uacm/sistemafitguide/imagenes/hombre_brazo_peso_propio.jpeg");
@@ -114,33 +114,33 @@ public class PantallaConfiguracionRutinaController implements Initializable {
                 break;
         }
     }
-    
-    @FXML private void volverPaso1() { 
-        lblTituloConfig.setText("PASO 1: SELECCIONA GRUPO MUSCULAR"); 
+
+    @FXML private void volverPaso1() {
+        lblTituloConfig.setText("PASO 1: SELECCIONA GRUPO MUSCULAR");
         quitarPanelKilos();
-        mostrarPaso(paso1Musculos); 
+        mostrarPaso(paso1Musculos);
     }
 
-    @FXML 
-    private void seleccionarPesoPropio() { 
-        tipoPesoSeleccionado = "Peso Propio"; 
-        mapaRutinas.get(grupoMuscularSeleccionado).setTipoPeso("Peso Propio"); 
+    @FXML
+    private void seleccionarPesoPropio() {
+        tipoPesoSeleccionado = "Peso Propio";
+        mapaRutinas.get(grupoMuscularSeleccionado).setTipoPeso("Peso Propio");
         kilosSeleccionados = 0.0;
         quitarPanelKilos();
-        avanzarPaso3(); 
+        avanzarPaso3();
     }
 
-    @FXML 
-    private void seleccionarPesoExtra() { 
-        tipoPesoSeleccionado = "Peso Extra"; 
-        mapaRutinas.get(grupoMuscularSeleccionado).setTipoPeso("Peso Extra"); 
+    @FXML
+    private void seleccionarPesoExtra() {
+        tipoPesoSeleccionado = "Peso Extra";
+        mapaRutinas.get(grupoMuscularSeleccionado).setTipoPeso("Peso Extra");
         kilosSeleccionados = 0.0;
-        mostrarSelectorKilos(); 
+        mostrarSelectorKilos();
     }
-    
+
 
     private void mostrarSelectorKilos() {
-        quitarPanelKilos(); 
+        quitarPanelKilos();
 
         Label lblTitulo = new Label("¿Cuánto peso extra cargarás?");
         lblTitulo.setFont(Font.font("System", FontWeight.BOLD, 16));
@@ -192,11 +192,11 @@ public class PantallaConfiguracionRutinaController implements Initializable {
         Button btnContinuar = new Button("Continuar ");
         btnContinuar.setPrefWidth(220);
         btnContinuar.setStyle(
-            "-fx-background-color: #387373; -fx-text-fill: white; " +
-            "-fx-font-weight: bold; -fx-font-size: 14px; " +
-            "-fx-background-radius: 20px; -fx-padding: 10 28 10 28; -fx-cursor: hand;"
+                "-fx-background-color: #387373; -fx-text-fill: white; " +
+                        "-fx-font-weight: bold; -fx-font-size: 14px; " +
+                        "-fx-background-radius: 20px; -fx-padding: 10 28 10 28; -fx-cursor: hand;"
         );
-        
+
         btnContinuar.setOnAction(e -> {
             if (kilosSeleccionados <= 0) {
                 mostrarAlertaError("Peso no válido", "Por favor introduce un peso mayor a 0 kg antes de continuar.");
@@ -226,11 +226,11 @@ public class PantallaConfiguracionRutinaController implements Initializable {
     private String formatKg(double kg) {
         return (kg == Math.floor(kg)) ? String.valueOf((int) kg) : String.valueOf(kg);
     }
-   
+
     private void avanzarPaso3() {
         lblTituloConfig.setText("PASO 3: SELECCIONA NIVEL (" + grupoMuscularSeleccionado.toUpperCase() + ")");
         mostrarPaso(paso3Nivel);
-        
+
         switch (grupoMuscularSeleccionado.toLowerCase()) {
             case "brazo":
                 cargarImagen(imgBasico, "/omr/uacm/sistemafitguide/imagenes/mujer_brazo_basico_pero_propio.jpg");
@@ -249,7 +249,7 @@ public class PantallaConfiguracionRutinaController implements Initializable {
                 break;
         }
     }
-    
+
     @FXML private void volverPaso2() { avanzarPaso2(); }
 
     @FXML private void seleccionarBasico() { nivelSeleccionado = "Básico"; mapaRutinas.get(grupoMuscularSeleccionado).setNivel("Básico"); avanzarPaso4(); }
@@ -258,15 +258,15 @@ public class PantallaConfiguracionRutinaController implements Initializable {
 
     private void avanzarPaso4() {
         String infoPeso = tipoPesoSeleccionado.equals("Peso Extra") && kilosSeleccionados > 0
-            ? " · " + formatKg(kilosSeleccionados) + " kg"
-            : "";
+                ? " · " + formatKg(kilosSeleccionados) + " kg"
+                : "";
 
         lblTituloConfig.setText("PASO 4: REPETICIONES Y SERIES (" + nivelSeleccionado.toUpperCase() + infoPeso + ")");
         mostrarPaso(paso4Ejercicios);
-        
+
         btnConfigurarDescanso.setVisible(true);
-        btnConfigurarDescanso.setDisable(false); 
-        
+        btnConfigurarDescanso.setDisable(false);
+
         flowPaneEjercicios.getChildren().clear();
         cajasTextoActuales.clear();
 
@@ -276,10 +276,10 @@ public class PantallaConfiguracionRutinaController implements Initializable {
         for (String[] ej : ejercicios) {
             VBox tarjeta = crearMiniTarjetaEjercicio(ej[0], ej[1], ej[2]);
             flowPaneEjercicios.getChildren().add(tarjeta);
-            
+
             HBox hbox = (HBox) tarjeta.getChildren().get(tarjeta.getChildren().size() - 1);
             TextField tf = (TextField) hbox.getChildren().get(0);
-            
+
             if (rutinaActual.getMapaRepeticiones().containsKey(ej[0])) {
                 tf.setText(String.valueOf(rutinaActual.getMapaRepeticiones().get(ej[0])));
             }
@@ -288,7 +288,7 @@ public class PantallaConfiguracionRutinaController implements Initializable {
 
         VBox panelSeries = new VBox(10);
         panelSeries.setAlignment(Pos.CENTER);
-        panelSeries.setPrefSize(180, 220); 
+        panelSeries.setPrefSize(180, 220);
         panelSeries.setStyle("-fx-background-color: #E8F5E9; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);");
 
         Label lblTitSeries = new Label("¿Cuántas Series?");
@@ -297,7 +297,7 @@ public class PantallaConfiguracionRutinaController implements Initializable {
 
         ComboBox<Integer> comboSeries = new ComboBox<>();
         comboSeries.getItems().addAll(1, 2, 3, 4, 5);
-        comboSeries.setValue(rutinaActual.getSeries() > 0 ? rutinaActual.getSeries() : 2); 
+        comboSeries.setValue(rutinaActual.getSeries() > 0 ? rutinaActual.getSeries() : 2);
         comboSeries.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
 
         comboSeries.setOnAction(e -> {
@@ -310,55 +310,55 @@ public class PantallaConfiguracionRutinaController implements Initializable {
         panelSeries.getChildren().addAll(lblTitSeries, comboSeries, lblAyuda);
         flowPaneEjercicios.getChildren().add(panelSeries);
     }
-    
+
     @FXML private void volverPaso3() { btnConfigurarDescanso.setVisible(false); avanzarPaso3(); }
-    
-    @FXML 
-    private void volverPaso4() { 
-        btnConfigurarDescanso.setVisible(true); 
+
+    @FXML
+    private void volverPaso4() {
+        btnConfigurarDescanso.setVisible(true);
         String infoPeso = tipoPesoSeleccionado.equals("Peso Extra") && kilosSeleccionados > 0
-            ? " · " + formatKg(kilosSeleccionados) + " kg"
-            : "";
-        lblTituloConfig.setText("PASO 4: REPETICIONES Y SERIES (" + nivelSeleccionado.toUpperCase() + infoPeso + ")"); 
-        mostrarPaso(paso4Ejercicios); 
+                ? " · " + formatKg(kilosSeleccionados) + " kg"
+                : "";
+        lblTituloConfig.setText("PASO 4: REPETICIONES Y SERIES (" + nivelSeleccionado.toUpperCase() + infoPeso + ")");
+        mostrarPaso(paso4Ejercicios);
     }
-        
+
     @FXML
     private void avanzarPaso5Descanso() {
         try {
-        Rutina rutinaActual = mapaRutinas.get(grupoMuscularSeleccionado);
-        if (rutinaActual == null) {
-            mostrarAlertaError("Error", "No se encontró configuración para: " + grupoMuscularSeleccionado);
-            return;
-        }
-
-        rutinaActual.getMapaRepeticiones().clear(); 
-        
-        List<String[]> ejerciciosOriginales = obtenerEjerciciosPorFiltro();
-
-        for (int i = 0; i < cajasTextoActuales.size(); i++) {
-            TextField tf = cajasTextoActuales.get(i);
-            if (tf.getText() == null || tf.getText().trim().isEmpty()) {
-                throw new SeleccionIncompletaException("Debes indicar el número de repeticiones en todos los ejercicios antes de continuar.");
+            Rutina rutinaActual = mapaRutinas.get(grupoMuscularSeleccionado);
+            if (rutinaActual == null) {
+                mostrarAlertaError("Error", "No se encontró configuración para: " + grupoMuscularSeleccionado);
+                return;
             }
-            String nombreEjercicio = ejerciciosOriginales.get(i)[0];
-            rutinaActual.getMapaRepeticiones().put(nombreEjercicio, Integer.parseInt(tf.getText().trim()));
+
+            rutinaActual.getMapaRepeticiones().clear();
+
+            List<String[]> ejerciciosOriginales = obtenerEjerciciosPorFiltro();
+
+            for (int i = 0; i < cajasTextoActuales.size(); i++) {
+                TextField tf = cajasTextoActuales.get(i);
+                if (tf.getText() == null || tf.getText().trim().isEmpty()) {
+                    throw new SeleccionIncompletaException("Debes indicar el número de repeticiones en todos los ejercicios antes de continuar.");
+                }
+                String nombreEjercicio = ejerciciosOriginales.get(i)[0];
+                rutinaActual.getMapaRepeticiones().put(nombreEjercicio, Integer.parseInt(tf.getText().trim()));
+            }
+
+            btnConfigurarDescanso.setVisible(false);
+            lblTituloConfig.setText("PASO 5: TIEMPO DE DESCANSO (" + grupoMuscularSeleccionado.toUpperCase() + ")");
+
+            txtDescanso.setText(String.valueOf(rutinaActual.getTiempoDescanso()));
+            mostrarPaso(paso5Descanso);
+
+        } catch (SeleccionIncompletaException e) {
+            mostrarAlertaError("Selección Incompleta", e.getMessage());
+        } catch (NumberFormatException e) {
+            mostrarAlertaError("Formato Incorrecto", "Por favor, ingresa solo números válidos en las repeticiones.");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        btnConfigurarDescanso.setVisible(false);
-        lblTituloConfig.setText("PASO 5: TIEMPO DE DESCANSO (" + grupoMuscularSeleccionado.toUpperCase() + ")");
-        
-        txtDescanso.setText(String.valueOf(rutinaActual.getTiempoDescanso()));
-        mostrarPaso(paso5Descanso);
-
-    } catch (SeleccionIncompletaException e) {
-        mostrarAlertaError("Selección Incompleta", e.getMessage());
-    } catch (NumberFormatException e) {
-        mostrarAlertaError("Formato Incorrecto", "Por favor, ingresa solo números válidos en las repeticiones.");
-    } catch (Exception e) {
-        e.printStackTrace();
     }
-}
 
     private void mostrarPaso(javafx.scene.Node pasoVisible) {
         paso1Musculos.setVisible(false); paso1Musculos.setManaged(false);
@@ -366,7 +366,7 @@ public class PantallaConfiguracionRutinaController implements Initializable {
         paso3Nivel.setVisible(false); paso3Nivel.setManaged(false);
         paso4Ejercicios.setVisible(false); paso4Ejercicios.setManaged(false);
         paso5Descanso.setVisible(false); paso5Descanso.setManaged(false);
-        
+
         pasoVisible.setVisible(true); pasoVisible.setManaged(true);
     }
 
@@ -381,7 +381,7 @@ public class PantallaConfiguracionRutinaController implements Initializable {
     private VBox crearMiniTarjetaEjercicio(String nombre, String rutaImagen, String reps) {
         VBox minitarjeta = new VBox(5);
         minitarjeta.setAlignment(Pos.CENTER);
-        minitarjeta.setPrefSize(180, 220); 
+        minitarjeta.setPrefSize(180, 220);
         minitarjeta.setStyle("-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);");
 
         ImageView img = new ImageView();
@@ -396,12 +396,12 @@ public class PantallaConfiguracionRutinaController implements Initializable {
         if (tipoPesoSeleccionado.equals("Peso Extra") && kilosSeleccionados > 0) {
             Label lblKgInfo = new Label("peso: " + formatKg(kilosSeleccionados) + " kg");
             lblKgInfo.setStyle(
-                "-fx-text-fill: white;" +
-                "-fx-background-color: #387373;" +
-                "-fx-background-radius: 10;" +
-                "-fx-padding: 2 8 2 8;" +
-                "-fx-font-size: 11px;" +
-                "-fx-font-weight: bold;"
+                    "-fx-text-fill: white;" +
+                            "-fx-background-color: #387373;" +
+                            "-fx-background-radius: 10;" +
+                            "-fx-padding: 2 8 2 8;" +
+                            "-fx-font-size: 11px;" +
+                            "-fx-font-weight: bold;"
             );
             minitarjeta.getChildren().addAll(img, lblNombre, lblKgInfo);
         } else {
@@ -412,7 +412,7 @@ public class PantallaConfiguracionRutinaController implements Initializable {
         txtReps.setPromptText(reps);
         txtReps.setPrefWidth(50);
         txtReps.setAlignment(Pos.CENTER);
-        txtReps.setText(""); 
+        txtReps.setText("");
 
         txtReps.textProperty().addListener((obs, old, newVal) -> {
             if (!newVal.matches("\\d*")) txtReps.setText(newVal.replaceAll("[^\\d]", ""));
@@ -420,7 +420,7 @@ public class PantallaConfiguracionRutinaController implements Initializable {
 
         HBox hbox = new HBox(8, txtReps, new Label("reps"));
         hbox.setAlignment(Pos.CENTER);
-        
+
         minitarjeta.getChildren().add(hbox);
         return minitarjeta;
     }
@@ -439,16 +439,16 @@ public class PantallaConfiguracionRutinaController implements Initializable {
         String n = nivelSeleccionado.toLowerCase();
         boolean usaMancuernas = tipoPesoSeleccionado.equals("Peso Extra");
 
-       if (m.equals("brazo")) {
+        if (m.equals("brazo")) {
             if (!usaMancuernas) { // Peso Propio
-                if (n.contains("basico") || n.contains("básico")) { 
-                    lista.add(new String[]{"Flexiones en pared", "/omr/uacm/sistemafitguide/preview/Brazo/pp/basico/pared_pre.png", "15"}); 
-                    lista.add(new String[]{"Flexiones cobra", "/omr/uacm/sistemafitguide/preview/Brazo/pp/basico/flexiones_cobra_pre.png", "12"}); 
-                    lista.add(new String[]{"Plancha antebrazo a mano", "/omr/uacm/sistemafitguide/preview/Brazo/pp/basico/plancha_ab_pre.png", "12"}); 
-                } else if (n.contains("intermedio") || n.contains("medio")) { 
-                    lista.add(new String[]{"Flexiones elevadas", "/omr/uacm/sistemafitguide/preview/Brazo/pp/medio/elevadas_pre.png", "15"}); 
-                    lista.add(new String[]{"Flexiones diamante", "/omr/uacm/sistemafitguide/preview/Brazo/pp/medio/flex_cerradas_pre.png", "15"}); 
-                    lista.add(new String[]{"Flexiones cerradas", "/omr/uacm/sistemafitguide/preview/Brazo/pp/medio/flex_cerradas_pre.png", "15"}); 
+                if (n.contains("basico") || n.contains("básico")) {
+                    lista.add(new String[]{"Flexiones en pared", "/omr/uacm/sistemafitguide/preview/Brazo/pp/basico/pared_pre.png", "15"});
+                    lista.add(new String[]{"Flexiones cobra", "/omr/uacm/sistemafitguide/preview/Brazo/pp/basico/flexiones_cobra_pre.png", "12"});
+                    lista.add(new String[]{"Plancha antebrazo a mano", "/omr/uacm/sistemafitguide/preview/Brazo/pp/basico/plancha_ab_pre.png", "12"});
+                } else if (n.contains("intermedio") || n.contains("medio")) {
+                    lista.add(new String[]{"Flexiones elevadas", "/omr/uacm/sistemafitguide/preview/Brazo/pp/medio/elevadas_pre.png", "15"});
+                    lista.add(new String[]{"Flexiones diamante", "/omr/uacm/sistemafitguide/preview/Brazo/pp/medio/flex_cerradas_pre.png", "15"});
+                    lista.add(new String[]{"Flexiones cerradas", "/omr/uacm/sistemafitguide/preview/Brazo/pp/medio/flex_cerradas_pre.png", "15"});
                 } else if (n.contains("avanzado")) {
                     lista.add(new String[]{"Flexiones a una mano", "/omr/uacm/sistemafitguide/preview/Brazo/pp/avanzado/una_mano_pre.png", "10"});
                     lista.add(new String[]{"Flexiones en pared", "/omr/uacm/sistemafitguide/preview/Brazo/pp/avanzado/pared_abajo_pre.png", "8"});
@@ -472,14 +472,14 @@ public class PantallaConfiguracionRutinaController implements Initializable {
         }
         else if (m.equals("abdomen")) {
             if (!usaMancuernas) { // Peso Propio
-                if (n.contains("basico") || n.contains("básico")) { 
-                    lista.add(new String[]{"Crunch abdominal", "/omr/uacm/sistemafitguide/preview/Abdomen/pp/basico/crunch_pre.png", "15"}); 
-                    lista.add(new String[]{"Elevación de piernas", "/omr/uacm/sistemafitguide/preview/Abdomen/pp/basico/elevacion_pre.png", "15"}); 
-                    lista.add(new String[]{"Plancha", "/omr/uacm/sistemafitguide/preview/Abdomen/pp/basico/plancha_pre.png", "15"}); 
-                } else if (n.contains("intermedio") || n.contains("medio")) { 
-                    lista.add(new String[]{"V-Ups (Abdominales en V)", "/omr/uacm/sistemafitguide/preview/Abdomen/pp/medio/v_pre.png", "12"}); 
-                    lista.add(new String[]{"Crunch bicicleta", "/omr/uacm/sistemafitguide/preview/Abdomen/pp/medio/bici_pre.png", "15"}); 
-                    lista.add(new String[]{"Plancha con rotacion", "/omr/uacm/sistemafitguide/preview/Abdomen/pp/medio/rot_pre.png", "12"}); 
+                if (n.contains("basico") || n.contains("básico")) {
+                    lista.add(new String[]{"Crunch abdominal", "/omr/uacm/sistemafitguide/preview/Abdomen/pp/basico/crunch_pre.png", "15"});
+                    lista.add(new String[]{"Elevación de piernas", "/omr/uacm/sistemafitguide/preview/Abdomen/pp/basico/elevacion_pre.png", "15"});
+                    lista.add(new String[]{"Plancha", "/omr/uacm/sistemafitguide/preview/Abdomen/pp/basico/plancha_pre.png", "15"});
+                } else if (n.contains("intermedio") || n.contains("medio")) {
+                    lista.add(new String[]{"V-Ups (Abdominales en V)", "/omr/uacm/sistemafitguide/preview/Abdomen/pp/medio/v_pre.png", "12"});
+                    lista.add(new String[]{"Crunch bicicleta", "/omr/uacm/sistemafitguide/preview/Abdomen/pp/medio/bici_pre.png", "15"});
+                    lista.add(new String[]{"Plancha con rotacion", "/omr/uacm/sistemafitguide/preview/Abdomen/pp/medio/rot_pre.png", "12"});
                 } else if (n.contains("avanzado")) {
                     lista.add(new String[]{"Bandera", "/omr/uacm/sistemafitguide/preview/Abdomen/pp/avanzado/bandera_pre.png", "12"});
                 }
@@ -489,12 +489,12 @@ public class PantallaConfiguracionRutinaController implements Initializable {
         }
         else if (m.equals("pierna")) {
             if (!usaMancuernas) { // Peso Propio
-                if (n.contains("basico") || n.contains("básico")) { 
-                    lista.add(new String[]{"Sentadilla", "/omr/uacm/sistemafitguide/preview/Pierna/pp/basico/sentadilla_pre.png", "15"}); 
-                    lista.add(new String[]{"Zancadas", "/omr/uacm/sistemafitguide/preview/Pierna/pp/basico/zancadas_pre.png", "15"}); 
-                } else if (n.contains("intermedio") || n.contains("medio")) { 
-                    lista.add(new String[]{"Sentadilla búlgara", "/omr/uacm/sistemafitguide/preview/Pierna/pp/medio/sentadilla_bulgara_pre.png", "12"}); 
-                    lista.add(new String[]{"Zancadas con salto", "/omr/uacm/sistemafitguide/preview/Pierna/pp/medio/sentasalto_pre.png", "12"}); 
+                if (n.contains("basico") || n.contains("básico")) {
+                    lista.add(new String[]{"Sentadilla", "/omr/uacm/sistemafitguide/preview/Pierna/pp/basico/sentadilla_pre.png", "15"});
+                    lista.add(new String[]{"Zancadas", "/omr/uacm/sistemafitguide/preview/Pierna/pp/basico/zancadas_pre.png", "15"});
+                } else if (n.contains("intermedio") || n.contains("medio")) {
+                    lista.add(new String[]{"Sentadilla búlgara", "/omr/uacm/sistemafitguide/preview/Pierna/pp/medio/sentadilla_bulgara_pre.png", "12"});
+                    lista.add(new String[]{"Zancadas con salto", "/omr/uacm/sistemafitguide/preview/Pierna/pp/medio/sentasalto_pre.png", "12"});
                 } else if (n.contains("avanzado")) {
                     // En preparación para avanzado de pierna
                 }
@@ -504,11 +504,11 @@ public class PantallaConfiguracionRutinaController implements Initializable {
         }
         return lista;
     }
-    
- 
+
+
     //  GUARDAR DESCANSO Y REDIRECCIÓN 
-  
-    
+
+
     @FXML
     private void accionTerminarVolverMenu() {
         if (guardarYValidarDescanso()) {
@@ -524,7 +524,7 @@ public class PantallaConfiguracionRutinaController implements Initializable {
     private void accionTerminarIniciarRutina() {
         if (guardarYValidarDescanso()) {
             try {
-                App.setRoot("PantallaListaEjercicios"); 
+                App.setRoot("PantallaListaEjercicios");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -542,41 +542,41 @@ public class PantallaConfiguracionRutinaController implements Initializable {
                 return false;
             }
             int segundos = Integer.parseInt(textoDescanso);
-            if (segundos <= 0) { 
+            if (segundos <= 0) {
                 mostrarAlertaError("Valor Inválido", "El tiempo de descanso debe ser mayor a 0 segundos.");
                 return false;
             }
-            
+
             String llaveCompuesta = grupoMuscularSeleccionado + "_" + nivelSeleccionado + "_" + tipoPesoSeleccionado;
 
             Rutina rutinaNueva = new Rutina(grupoMuscularSeleccionado);
             rutinaNueva.setNivel(nivelSeleccionado);
             rutinaNueva.setTipoPeso(tipoPesoSeleccionado);
             rutinaNueva.setTiempoDescanso(segundos);
-            
+
             // Se guardan las series en el objeto Rutina
             rutinaNueva.setSeries(seriesSeleccionadas);
-            
+
             if (tipoPesoSeleccionado.equals("Peso Extra") && kilosSeleccionados > 0) {
                 rutinaNueva.setPesoExtraKg(kilosSeleccionados);
             }
-            
+
             rutinaNueva.setMapaRepeticiones(new java.util.HashMap<>(rutinaBase.getMapaRepeticiones()));
 
             mapaRutinas.put(llaveCompuesta, rutinaNueva);
-            
+
             if (Sesion.idUsuarioActivo != -1) {
-                 new RutinaGuardadaDAO().guardarOActualizar(
-                  Sesion.idUsuarioActivo, llaveCompuesta, rutinaNueva
+                new RutinaGuardadaDAO().guardarOActualizar(
+                        Sesion.idUsuarioActivo, llaveCompuesta, rutinaNueva
                 );
             }
 
-          
+
             GestionRutina.getInstance().setMusculoSeleccionado(grupoMuscularSeleccionado);
             GestionRutina.getInstance().setNivelSeleccionado(nivelSeleccionado);
             GestionRutina.getInstance().setUsaMancuernas(tipoPesoSeleccionado.equals("Peso Extra"));
             GestionRutina.getInstance().setLlaveRutina(llaveCompuesta);
-            
+
             PantallaBienvenidoUsuarioController.rutinaConfigurada = true;
             return true;
 

@@ -10,7 +10,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?> 
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -19,7 +19,7 @@
    <children>
       <HBox alignment="CENTER" maxHeight="460.0" maxWidth="650.0" prefHeight="460.0" prefWidth="650.0">
          <children>
-            
+
             <VBox alignment="CENTER" prefHeight="460.0" prefWidth="325.0" spacing="20.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15 0 0 15;">
                <children>
                   <Label text="FitGuide">
@@ -50,12 +50,12 @@
                   </Button>
                </children>
             </VBox>
-            
+
             <VBox alignment="CENTER" prefHeight="460.0" prefWidth="325.0" style="-fx-background-color: #31C950; -fx-background-radius: 0 15 15 0;">
                <children>
                   <StackPane prefHeight="460.0" prefWidth="325.0">
                      <children>
-                        
+
                         <VBox fx:id="vboxSeleccionRol" alignment="CENTER" prefHeight="460.0" prefWidth="325.0" spacing="25.0">
                            <children>
                               <Label text="Seleccione su función" textFill="WHITE">
@@ -81,7 +81,7 @@
                               </Button>
                            </children>
                         </VBox>
-                        
+
                         <VBox fx:id="vboxLogin" alignment="CENTER" prefHeight="460.0" prefWidth="325.0" spacing="20.0" visible="false">
                            <children>
                               <Label fx:id="lblTituloLogin" text="Iniciar Sesión" textFill="WHITE">
@@ -116,7 +116,7 @@
                               </Button>
                            </children>
                         </VBox>
-                        
+
                         <VBox fx:id="vboxRegistro" alignment="CENTER" prefHeight="460.0" prefWidth="325.0" spacing="12.0" visible="false">
                            <children>
                               <Label prefHeight="36.0" prefWidth="85.0" text="Registro" textFill="WHITE" wrapText="true">
@@ -148,25 +148,25 @@
                                  </font>
                               </Label>
                               <DatePicker fx:id="dpFechaNacimiento" prefHeight="25.0" prefWidth="254.0" />
-                            <Label text="Género:" textFill="WHITE">
-                                <font>
+                              <Label text="Género:" textFill="WHITE">
+                                 <font>
                                     <Font name="System Bold Italic" size="15.0" />
-                                </font>
-                            </Label>
-                            <HBox alignment="CENTER" spacing="25.0" style="-fx-padding: 5 0 10 0;">
-                                <children>
-                                    <Button fx:id="btnHombre" text="Hombre" onAction="#seleccionarHombre" 
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER" spacing="25.0" style="-fx-padding: 5 0 10 0;">
+                                 <children>
+                                    <Button fx:id="btnHombre" text="Hombre" onAction="#seleccionarHombre"
                                             style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-min-width: 110px; -fx-min-height: 38px; -fx-background-radius: 8; -fx-cursor: hand;" />
-                                    <Button fx:id="btnMujer" text="Mujer" onAction="#seleccionarMujer" 
+                                    <Button fx:id="btnMujer" text="Mujer" onAction="#seleccionarMujer"
                                             style="-fx-background-color: #e91e63; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-min-width: 110px; -fx-min-height: 38px; -fx-background-radius: 8; -fx-cursor: hand;" />
-                                </children>
-                            </HBox>
-                            <Label text="Contraseña:" textFill="WHITE">
-                                <font>
+                                 </children>
+                              </HBox>
+                              <Label text="Contraseña:" textFill="WHITE">
+                                 <font>
                                     <Font name="System Bold Italic" size="15.0" />
-                                </font>
-                            </Label>
-                            <PasswordField fx:id="pfContrasenaRegistro" maxWidth="250.0" promptText="contraseña" />
+                                 </font>
+                              </Label>
+                              <PasswordField fx:id="pfContrasenaRegistro" maxWidth="250.0" promptText="contraseña" />
                               <Button fx:id="btnRegistrarmeEnBD" mnemonicParsing="false" onAction="#accionRegistrarmeBaseDatos" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-font-weight: bold;" text="Registrarme">
                                  <VBox.margin>
                                     <Insets bottom="15.0" />
@@ -180,7 +180,7 @@
                               </Button>
                            </children>
                         </VBox>
-                        
+
                         <VBox fx:id="vboxRegistroCoach" alignment="CENTER" prefHeight="460.0" prefWidth="325.0" spacing="12.0" visible="false">
                            <children>
                               <Label text="Registro de Coach" textFill="WHITE">
@@ -216,12 +216,12 @@
                               </Button>
                            </children>
                         </VBox>
-                        
+
                      </children>
                   </StackPane>
                </children>
             </VBox>
-            
+
          </children>
       </HBox>
    </children>

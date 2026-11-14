@@ -19,12 +19,12 @@ public class PantallaCargandoController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
-   @Override
+
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Temporizador de 3 segundos exactos
         javafx.animation.PauseTransition delay = new javafx.animation.PauseTransition(javafx.util.Duration.seconds(3));
-        
+
         delay.setOnFinished(event -> {
             try {
                 // Terminan los 3 segundos y salta a la Bienvenida
@@ -34,7 +34,7 @@ public class PantallaCargandoController implements Initializable {
             }
         });
         delay.play();
-    }  
-    
+    }
+
 }
 

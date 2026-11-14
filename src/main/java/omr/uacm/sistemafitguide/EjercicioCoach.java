@@ -54,7 +54,7 @@ public class EjercicioCoach {
                           String tipoPeso, int repeticiones, int series, int duracion,
                           int descanso, String descripcion, String urlImagen, String urlVideo) {
         this(0, nombre, zonaCorporal, nivel, tipoPeso, repeticiones, series,
-             duracion, descanso, descripcion, urlImagen, urlVideo);
+                duracion, descanso, descripcion, urlImagen, urlVideo);
     }
 
     // ── ESTILO 1: camelCase (Estándar Java & JavaFX Properties) ──────────────

@@ -1,8 +1,8 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package omr.uacm.sistemafitguide;
+        * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+        * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+        */
+        package omr.uacm.sistemafitguide;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,10 +42,10 @@ public class Rutina {
 
     public Map<String, Integer> getMapaRepeticiones() { return mapaRepeticiones; }
     public void setMapaRepeticiones(Map<String, Integer> mapaRepeticiones) { this.mapaRepeticiones = mapaRepeticiones; }
-    
+
     public double getPesoExtraKg() { return pesoExtraKg; }
     public void setPesoExtraKg(double pesoExtraKg) { this.pesoExtraKg = pesoExtraKg; }
-    
+
     public int getSeries() { return series; }
     public void setSeries(int series) { this.series = series; }
 }

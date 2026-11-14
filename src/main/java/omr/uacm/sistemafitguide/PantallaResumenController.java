@@ -1,8 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
+         * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+         * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+         */
 package omr.uacm.sistemafitguide;
 
 import java.io.IOException;
@@ -21,7 +20,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
- /*
+/*
  * @author migue
  */
 
@@ -33,7 +32,7 @@ public class PantallaResumenController implements Initializable {
     @FXML private GridPane gridEjercicios;
     @FXML private Label lblTiempoTotal;
 
- 
+
 
     public static List<HistorialEjercicio> ejerciciosCompletados = new ArrayList<>();
     public static int tiempoTotalSegundos = 0;
@@ -46,11 +45,11 @@ public class PantallaResumenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // limpiamos los datos 
         gridEjercicios.getChildren().clear();
-        gridEjercicios.getRowConstraints().clear(); 
+        gridEjercicios.getRowConstraints().clear();
         gridEjercicios.setVgap(12);
-        gridEjercicios.setHgap(30); 
-       gridEjercicios.getChildren().clear();
-       
+        gridEjercicios.setHgap(30);
+        gridEjercicios.getChildren().clear();
+
         // formatear y mostrar el tiempo
         int minutos = tiempoTotalSegundos / 60;
         int segundos = tiempoTotalSegundos % 60;
@@ -58,12 +57,12 @@ public class PantallaResumenController implements Initializable {
 
         int filaActual = 0;
         for (HistorialEjercicio ej : ejerciciosCompletados) {
-            
+
             // Nombre del ejercicio
             Label lblNombre = new Label(ej.getNombreEjercicio() + ".");
             lblNombre.setTextFill(javafx.scene.paint.Color.WHITE);
             lblNombre.setFont(Font.font("System", FontWeight.BOLD, 20));
-            
+
             //  repeticiones hechas
             Label lblReps = new Label(ej.getRepsReales() + " repeticiones.");
             lblReps.setTextFill(javafx.scene.paint.Color.WHITE);
@@ -72,13 +71,13 @@ public class PantallaResumenController implements Initializable {
             // inyectamos los componentes dinamicos en la cuadricula
             gridEjercicios.add(lblNombre, 0, filaActual);
             gridEjercicios.add(lblReps, 1, filaActual);
-            
+
             filaActual++;
         }
 
         //guardamos la sesión automaticamente
         guardarEntrenamientoEnBaseDatos();
-    }    
+    }
 
     private void guardarEntrenamientoEnBaseDatos() {
         if (ejerciciosCompletados.isEmpty()) {
@@ -87,11 +86,11 @@ public class PantallaResumenController implements Initializable {
         }
 
         int idUsuarioLogueado = Sesion.idUsuarioActivo;
-        String fechaHoy = LocalDate.now().toString(); 
+        String fechaHoy = LocalDate.now().toString();
 
         // generamos el objeto cabecera
         HistorialRutina cabecera = new HistorialRutina(idUsuarioLogueado, fechaHoy, tiempoTotalSegundos);
-        
+
         System.out.println("Escribiendo registro en historial_rutinas...");
         int idHistorialGenerado = rutinaDAO.insertarHistorialRutina(cabecera);
 
@@ -111,7 +110,7 @@ public class PantallaResumenController implements Initializable {
         }
     }
 
-        @FXML
+    @FXML
     private void accionCerrarSesion(ActionEvent event) throws IOException {
         ejerciciosCompletados.clear();
         tiempoTotalSegundos = 0;
@@ -119,7 +118,7 @@ public class PantallaResumenController implements Initializable {
         App.setRoot("PantallaInicio");
     }
 
-        @FXML
+    @FXML
     private void accionInicio(ActionEvent event) throws IOException {
         //limpiamos para el siguiente usuario
         ejerciciosCompletados.clear();
@@ -127,7 +126,7 @@ public class PantallaResumenController implements Initializable {
         App.setRoot("PantallaBienvenidoUsuario");
     }
 
-        @FXML
+    @FXML
     private void accionRegresar(ActionEvent event) throws IOException {
         ejerciciosCompletados.clear();
         tiempoTotalSegundos = 0;

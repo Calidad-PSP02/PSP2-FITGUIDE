@@ -14,7 +14,7 @@ import java.sql.Statement;
  * @author migue
  */
 public class ConexionDB {
-    
+
     private static final String URL = "jdbc:sqlite:fitguide.db";
 
     //conexion activa
@@ -57,7 +57,7 @@ public class ConexionDB {
                 + "reps_reales INTEGER NOT NULL, "
                 + "FOREIGN KEY (id_historial) REFERENCES historial_rutinas (id_historial) ON DELETE CASCADE"
                 + ");";
-        
+
         String tablaRutinasGuardadas = "CREATE TABLE IF NOT EXISTS rutinas_guardadas ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "id_usuario INTEGER NOT NULL, "

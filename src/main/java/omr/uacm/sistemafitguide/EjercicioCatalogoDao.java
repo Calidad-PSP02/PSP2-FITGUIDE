@@ -9,13 +9,15 @@ import java.util.List;
 
 /**
  * DAO del catalogo de ejercicios (tabla ejercicios_catalogo).
- * Los nombres de los metodos coinciden con los que usan las pantallas del Coach.
+ * Soporta AMBOS estilos de programación: PascalCase y camelCase (Java Standard).
  *
  * @author FitGuide
  */
 public class EjercicioCatalogoDao {
 
     private static final String COLUMNAS = "id_ejercicio, nombre, zona_corporal, nivel, tipo_peso, repeticiones, series, duracion, descanso, descripcion, url_imagen, url_video";
+
+    // ── Estilo PascalCase ────────────────────────────────────────────────────
 
     public boolean Agregar(EjercicioCoach ejercicio) {
         String sql = "INSERT INTO ejercicios_catalogo (nombre, zona_corporal, nivel, tipo_peso, repeticiones, series, duracion, descanso, descripcion, url_imagen, url_video) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -90,6 +92,17 @@ public class EjercicioCatalogoDao {
         parametros.add("%" + texto + "%");
         return consultar("SELECT " + COLUMNAS + " FROM ejercicios_catalogo WHERE nombre LIKE ? ORDER BY zona_corporal, nivel, nombre;", parametros);
     }
+
+    // ── Estilo camelCase (Aliases estándar para compatibilidad dual) ─────────
+
+    public boolean agregar(EjercicioCoach ejercicio) { return Agregar(ejercicio); }
+    public boolean actualizar(EjercicioCoach ejercicio) { return Actualizar(ejercicio); }
+    public boolean eliminar(int idEjercicio) { return Eliminar(idEjercicio); }
+    public List<EjercicioCoach> obtenerTodos() { return ObtenerTodos(); }
+    public List<EjercicioCoach> obtenerFiltrados(String zona, String nivel, String tipoPeso) { return ObtenerFiltrados(zona, nivel, tipoPeso); }
+    public List<EjercicioCoach> buscarPorNombre(String texto) { return BuscarPorNombre(texto); }
+
+    // ── Métodos Privados Auxiliares ──────────────────────────────────────────
 
     private void agregarFiltro(StringBuilder sql, List<String> parametros, String columna, String valor) {
         if (valor != null && !valor.isEmpty() && !valor.equals("Todos")) {

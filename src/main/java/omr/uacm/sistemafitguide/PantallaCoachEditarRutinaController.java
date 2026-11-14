@@ -125,7 +125,7 @@ public class PantallaCoachEditarRutinaController implements Initializable {
             // Si el mapa estaba vacío, obtener ejercicios sugeridos del catálogo
             boolean usaMancuernas = "Peso Extra".equalsIgnoreCase(rutinaAEditar.getTipoPeso());
             List<Ejercicio> base = CatalogoEjercicios.obtenerRutina(
-                rutinaAEditar.getGrupoMuscular(), rutinaAEditar.getNivel(), usaMancuernas
+                    rutinaAEditar.getGrupoMuscular(), rutinaAEditar.getNivel(), usaMancuernas
             );
             if (base != null) {
                 for (Ejercicio ej : base) {
@@ -244,3 +244,4 @@ public class PantallaCoachEditarRutinaController implements Initializable {
         public SimpleIntegerProperty repeticionesProperty() { return repeticiones; }
     }
 }
+

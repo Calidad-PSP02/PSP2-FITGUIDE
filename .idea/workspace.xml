@@ -5,8 +5,85 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6e011da-a779-4483-82b4-c2126897165b" name="Changes" comment="se realizaron los cambios correspondientes al modulo de la visualización de los ejercicios por parte del coach">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-DescripcionProblema.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-DocumentoRequisitos.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/03-DisenioConceptual.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/04-GuiaEstilosProgramacion.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-ChecklistDiseno_PSP2.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-ChecklistCodigo_PSP2.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/07-DocumentacionTecnica_Herramientas_Instrucciones.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fitguide.db" beforeDir="false" afterPath="$PROJECT_DIR$/fitguide.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fitguide.sqbpro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/CatalogoEjercicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/CatalogoEjercicios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/CoachDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/CoachDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/CoachPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/CoachPanelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/CoachRutinaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/CoachRutinaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/ConexionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/ConexionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/Ejercicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/Ejercicio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/EjercicioCatalogoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/EjercicioCatalogoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/EjercicioCoach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/EjercicioCoach.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/GestionRutina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/GestionRutina.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/HistorialEjercicioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/HistorialEjercicioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/HistorialRutinaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/HistorialRutinaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaBienvenidoUsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaBienvenidoUsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaCargandoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaCargandoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaCargandoReController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaCargandoReController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaCoachCatalogoEjerciciosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaCoachCatalogoEjerciciosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaCoachEditarRutinaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaCoachEditarRutinaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaCoachFormularioEjercicioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaCoachFormularioEjercicioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaCoachGestionRutinasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaCoachGestionRutinasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaCoachMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaCoachMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaConfiguracionRutinaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaConfiguracionRutinaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaDescansoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaDescansoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaEjecucionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaEjecucionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaInicioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaInicioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaListaEjerciciosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaListaEjerciciosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaResumenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/PantallaResumenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/Rutina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/Rutina.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/RutinaGuardadaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/RutinaGuardadaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/Sesion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/Sesion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/omr/uacm/sistemafitguide/UsuarioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/imagenes/logo.ahorasi.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/logoahorasi.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/CoachPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/CoachPanel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaBienvenidoUsuario.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaBienvenidoUsuario.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaCoachCatalogoEjercicios.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaCoachCatalogoEjercicios.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaCoachEditarRutina.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaCoachEditarRutina.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaCoachFormularioEjercicio.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaCoachFormularioEjercicio.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaCoachGestionRutinas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaCoachGestionRutinas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaCoachMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaCoachMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaConfiguracionRutina.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaConfiguracionRutina.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaDescanso.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaDescanso.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaEjecucion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaEjecucion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaInicio.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaInicio.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaListaEjercicios.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaListaEjercicios.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaResumen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/omr/uacm/sistemafitguide/PantallaResumen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/CoachPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/CoachPanel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/EjercicioCatalogoDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/EjercicioCatalogoDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaBienvenidoUsuario.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaBienvenidoUsuario.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaCoachCatalogoEjercicios.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaCoachCatalogoEjercicios.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaCoachCatalogoEjerciciosController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaCoachCatalogoEjerciciosController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaCoachEditarRutina.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaCoachEditarRutina.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaCoachFormularioEjercicio.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaCoachFormularioEjercicio.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaCoachFormularioEjercicioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaCoachFormularioEjercicioController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaCoachGestionRutinas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaCoachGestionRutinas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaCoachMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaCoachMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaConfiguracionRutina.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaConfiguracionRutina.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaDescanso.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaDescanso.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaEjecucion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaEjecucion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaEjecucionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaEjecucionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaInicio.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaInicio.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaListaEjercicios.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaListaEjercicios.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaResumen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaResumen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaResumenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/PantallaResumenController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/RutinaGuardadaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/RutinaGuardadaDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/omr/uacm/sistemafitguide/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/null/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/null/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,12 +100,12 @@
     &quot;assignee&quot;: &quot;DestroyedSquid&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:Calidad-PSP02/PSP2-FITGUIDE.git",
-    "accountId": "071b5910-c6fd-452c-b304-4a8e6691a575"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Calidad-PSP02/PSP2-FITGUIDE.git&quot;,
+    &quot;accountId&quot;: &quot;5ed4731e-9ca9-4367-870a-fab95de1bdfe&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8,
   &quot;fromUser&quot;: false
@@ -41,6 +118,11 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SistemaFitGuide [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SistemaFitGuide [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SistemaFitGuide [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SistemaFitGuide [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SistemaFitGuide [verify].executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -62,6 +144,19 @@
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="SistemaFitGuide" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="SistemaFitGuide" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>

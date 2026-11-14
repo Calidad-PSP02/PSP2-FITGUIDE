@@ -218,3 +218,4 @@ public class PantallaCoachGestionRutinasController implements Initializable {
         public SimpleIntegerProperty repeticionesProperty() { return repeticiones; }
     }
 }
+

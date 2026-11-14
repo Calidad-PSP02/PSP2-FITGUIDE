@@ -1,7 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+         * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+         * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+         */
 package omr.uacm.sistemafitguide;
 
 import java.io.IOException;
@@ -33,16 +33,16 @@ public class PantallaInicioController implements Initializable {
     @FXML private VBox vboxLogin;
     @FXML private Label lblTituloLogin;
     @FXML private TextField txtUsuario;
-    @FXML private PasswordField pfContrasenaLogin; 
+    @FXML private PasswordField pfContrasenaLogin;
     @FXML private Button btnIngresaSesion;
-    @FXML private Hyperlink linkOlvidoContrasena; 
+    @FXML private Hyperlink linkOlvidoContrasena;
 
     @FXML private VBox vboxRegistro;
     @FXML private TextField txtUsuarioRegistro;
     @FXML private TextField txtPesoRegistro;
-    @FXML private TextField txtAlturaRegistro; 
+    @FXML private TextField txtAlturaRegistro;
     @FXML private DatePicker dpFechaNacimiento;
-    @FXML private PasswordField pfContrasenaRegistro; 
+    @FXML private PasswordField pfContrasenaRegistro;
     @FXML private Button btnRegistrarmeEnBD;
     private String generoSeleccionado = "";
     @FXML private Button btnHombre;
@@ -53,13 +53,13 @@ public class PantallaInicioController implements Initializable {
     @FXML private TextField txtEspecialidadRegistro;
     @FXML private PasswordField pfContrasenaCoachRegistro;
     @FXML private Button btnRegistrarCoach;
-    
+
     //se instandia lo del usuario DAO
     private final UsuarioDAO usuarioDAO = new UsuarioDAO();
     private final CoachDAO coachDAO = new CoachDAO();
     private boolean modoRegistro = false;
     private boolean esCoachSeleccionado = false;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         mostrarPanel(vboxSeleccionRol);
@@ -110,9 +110,9 @@ public class PantallaInicioController implements Initializable {
     @FXML
     private void accionIniciarSesion(ActionEvent event) {
         try {
-            String usuario = txtUsuario.getText(); 
+            String usuario = txtUsuario.getText();
             String contrasena = pfContrasenaLogin.getText();
-        
+
             // validamos campos vacios
             if (usuario == null || usuario.trim().isEmpty() || contrasena == null || contrasena.trim().isEmpty()) {
                 throw new CuentaDatosIncompletosException("Faltan datos. Por favor, ingresa tanto tu usuario como tu contraseña.");
@@ -123,29 +123,29 @@ public class PantallaInicioController implements Initializable {
                 iniciarSesionCoach(usuario, contrasena);
                 return;
             }
-            
+
             //consultamos la base de datos 
             int idUsuario = usuarioDAO.verificarLogin(usuario, contrasena);
-        
+
             // si nos regresa -1 las credenciales  estal mal
             if (idUsuario == -1) {
                 throw new CredencialesInvalidasException("Usuario o contraseña incorrectos. Inténtalo de nuevo.");
             }
-            
+
             // guardamos loa datos del usuario
             Sesion.idUsuarioActivo = idUsuario;
             // cargar las rutinas guardadas de este usuario
             new RutinaGuardadaDAO().cargarRutinasUsuario(idUsuario);
             // si tiene al menos una rutina lo deja pasar
-            PantallaBienvenidoUsuarioController.rutinaConfigurada = 
-                !PantallaConfiguracionRutinaController.mapaRutinas.isEmpty();
+            PantallaBienvenidoUsuarioController.rutinaConfigurada =
+                    !PantallaConfiguracionRutinaController.mapaRutinas.isEmpty();
             Sesion.nombreUsuarioActivo = usuario;
-            
+
             System.out.println("Sesión iniciada. Bienvenido, " + usuario + " (ID: " + idUsuario + ")");
-        
+
             // Pasa a la siguiente pantalla
             App.setRoot("PantallaBienvenidoUsuario");
-        
+
         } catch (CuentaDatosIncompletosException e) {
             mostrarAlertaError("Datos Incompletos", e.getMessage());
         } catch (CredencialesInvalidasException e) {
@@ -153,7 +153,7 @@ public class PantallaInicioController implements Initializable {
         } catch (IOException e) {
             mostrarAlertaError("Error de Pantalla", "No se pudo cargar la siguiente pantalla.");
         }
-    }   
+    }
 
     @FXML
     private void recuperarContraseña(ActionEvent event) {
@@ -171,11 +171,11 @@ public class PantallaInicioController implements Initializable {
 
             // validmaos campos vacios
             if (usuario == null || usuario.trim().isEmpty() ||
-                pesoStr == null || pesoStr.trim().isEmpty() ||
-                alturaStr == null || alturaStr.trim().isEmpty() ||
-                contrasena == null || contrasena.trim().isEmpty() ||
-                fechaNacimiento == null || 
-                generoSeleccionado.isEmpty()) { 
+                    pesoStr == null || pesoStr.trim().isEmpty() ||
+                    alturaStr == null || alturaStr.trim().isEmpty() ||
+                    contrasena == null || contrasena.trim().isEmpty() ||
+                    fechaNacimiento == null ||
+                    generoSeleccionado.isEmpty()) {
                 throw new CuentaDatosIncompletosException("Faltan datos. Por favor, llena todos los campos y selecciona tu género.");
             }
 
@@ -194,7 +194,7 @@ public class PantallaInicioController implements Initializable {
             // Validacion de rango de edad
             LocalDate hoy = LocalDate.now();
             int edad = Period.between(fechaNacimiento, hoy).getYears();
-            
+
             if (edad < 15 || edad > 100) {
                 throw new EdadFueraDeRangoException("Para usar FitGuide debes tener mínimo 15 años.");
             }
@@ -202,16 +202,16 @@ public class PantallaInicioController implements Initializable {
             // insertamos los datos para la abse de datos
             //contruimos el usuario con su informacion valida
             Usuario nuevoUsuario = new Usuario(usuario, contrasena, peso, altura, fechaNacimiento.toString(), generoSeleccionado);
-            
+
             // Intentamos registrarlo a través del DAO
             boolean registradoExitosamente = usuarioDAO.registrarUsuario(nuevoUsuario);
-            
+
             if (!registradoExitosamente) {
                 throw new Exception("El nombre de usuario '" + usuario + "' ya existe o hubo un problema con el registro.");
             }
 
             System.out.println("Usuario registrado exitosamente en la BD. Iniciando sesión automática...");
-            
+
             //iniciamos secion automatica para el nuevo usuario
             int idUsuarioNuevo = usuarioDAO.verificarLogin(usuario, contrasena);
             Sesion.idUsuarioActivo = idUsuarioNuevo;
@@ -236,7 +236,7 @@ public class PantallaInicioController implements Initializable {
             e.printStackTrace();
         }
     }
-    
+
     // REGISTRO COACH
     @FXML
     private void accionRegistrarCoach(ActionEvent event) {
@@ -298,14 +298,14 @@ public class PantallaInicioController implements Initializable {
         btnHombre.setStyle("-fx-background-color: #1a5276; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;");
         btnMujer.setStyle("-fx-background-color: #e91e63; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8;");
     }
-    
+
     @FXML
     private void seleccionarMujer() {
         generoSeleccionado = "Mujer";
         btnMujer.setStyle("-fx-background-color: #78281f; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: white; -fx-border-radius: 8; -fx-border-width: 2;");
         btnHombre.setStyle("-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8;");
     }
-    
+
     private void mostrarAlertaError(String titulo, String mensaje) {
         Alert alerta = new Alert(Alert.AlertType.ERROR);
         alerta.setTitle(titulo);

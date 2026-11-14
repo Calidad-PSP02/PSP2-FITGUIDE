@@ -20,22 +20,22 @@ import javafx.scene.image.Image;
 public class App extends Application {
 
     private static Scene scene;
-  
+
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("PantallaInicio"), 900, 600);
-        
+
         try {
             Image icon = new Image(App.class.getResourceAsStream("/omr/uacm/sistemafitguide/imagenes/logo.jpg"));
             stage.getIcons().add(icon);
         } catch (Exception e) {
             System.err.println("No se encontró el ícono principal.");
         }
-        
+
         stage.setScene(scene);
         stage.setTitle("FitGuide");
         stage.show();
-    }    
+    }
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
@@ -48,7 +48,7 @@ public class App extends Application {
 
     public static void main(String[] args) {
         ConexionDB.inicializarBaseDatos(); //conecion a al base de datos
-        
+
         launch();
     }
 }

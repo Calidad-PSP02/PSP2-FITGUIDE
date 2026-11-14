@@ -22,7 +22,7 @@ public class CatalogoEjercicios {
         String n = nivel.toLowerCase();
 
 
-       // EJERCICIOS DE BRAZO 
+        // EJERCICIOS DE BRAZO
         if (m.equals("brazo")) {
             if (!usaMancuernas) { // Peso Propio
                 if (n.contains("basico") || n.contains("básico")) {
@@ -48,9 +48,9 @@ public class CatalogoEjercicios {
                     lista.add(new Ejercicio("Curl sostenido", "/omr/uacm/sistemafitguide/videos/peso_extra/brazo/intermedio/curl_sostenido.gif", "/omr/uacm/sistemafitguide/preview/Brazo/pe/medio/curl_sos_pre.png", "Flexiona los codos a 90 grados con las mancuernas y mantén la posición fija.", 15));
                     lista.add(new Ejercicio("Curl concentrado", "/omr/uacm/sistemafitguide/videos/peso_extra/brazo/intermedio/curl_concentrado.gif", "/omr/uacm/sistemafitguide/preview/Brazo/pe/medio/curl_consent_pre.png", "Sentado, apolla tu codo en tu pierna y levanta el peso.", 12));
                     lista.add(new Ejercicio("Squeeze ", "/omr/uacm/sistemafitguide/videos/peso_extra/brazo/intermedio/squeeze_press.gif", "/omr/uacm/sistemafitguide/preview/Brazo/pe/medio/squeezee.png", "Acostado, levanta las pesas hasta tener tu brazo por completo estirado", 12));
-                     lista.add(new Ejercicio("Zottman ", "/omr/uacm/sistemafitguide/videos/peso_extra/brazo/intermedio/zottman.gif", "/omr/uacm/sistemafitguide/preview/Brazo/pe/medio/zottman_pre.png", "Coloca tu brazo a la altura de tu cadera, levanta el peso y cuando llegues a la altura de tu cuello gira tu muñeca", 12));
+                    lista.add(new Ejercicio("Zottman ", "/omr/uacm/sistemafitguide/videos/peso_extra/brazo/intermedio/zottman.gif", "/omr/uacm/sistemafitguide/preview/Brazo/pe/medio/zottman_pre.png", "Coloca tu brazo a la altura de tu cadera, levanta el peso y cuando llegues a la altura de tu cuello gira tu muñeca", 12));
                 } else if (n.contains("avanzado")) {
-                  
+
                 }
             }
         }

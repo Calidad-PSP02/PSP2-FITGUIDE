@@ -20,10 +20,10 @@
          <children>
             <HBox alignment="CENTER" prefHeight="582.0" prefWidth="900.0" spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 25; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);">
                <children>
-                  
+
                   <VBox alignment="CENTER" fillWidth="false" prefHeight="540.0" prefWidth="240.0" spacing="20.0" HBox.hgrow="ALWAYS">
                      <children>
-                        
+
                         <VBox alignment="TOP_CENTER" prefWidth="220.0" spacing="10.0">
                            <children>
                               <Label text="MOTIVACIÓN DIARIA" textFill="#2d5a27">
@@ -93,7 +93,7 @@
                               <Image url="@/omr/uacm/sistemafitguide/imagenes/logo.ahorasi.jpg" />
                            </image>
                         </ImageView>
-                        
+
                         <Button fx:id="btnEmpezar" mnemonicParsing="false" onAction="#accionEmpezarRutina" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #2D5A27; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px; -fx-background-radius: 30; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 5);" text="EMPEZAR RUTINA">
                            <cursor><Cursor fx:constant="HAND" /></cursor>
                         </Button>
@@ -146,11 +146,11 @@
                            </children>
                            <VBox.margin><Insets right="20.0" /></VBox.margin>
                         </GridPane>
-                        
+
                         <Label fx:id="lblRachaTexto" style="-fx-background-color: #E4F2E7; -fx-background-radius: 20; -fx-padding: 8 20; -fx-text-fill: #2E7D32;" text="0 DÍAS DE RACHA">
                            <font><Font name="System Bold" size="15.0" /></font>
                         </Label>
-                        
+
                         <Button mnemonicParsing="false" onAction="#accionConfigurarRutina" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 30; -fx-font-weight: bold; -fx-font-size: 13px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 8, 0, 0, 4);" text="PERSONALIZAR RUTINA">
                            <cursor><Cursor fx:constant="HAND" /></cursor>
                            <VBox.margin>

@@ -11,12 +11,12 @@ package omr.uacm.sistemafitguide;
 
 public class Ejercicio {
     private String nombre;
-    private String rutaVideo; 
-    private String rutaImagen; 
+    private String rutaVideo;
+    private String rutaImagen;
     private String intrucciones;
     private int repeticionesObjetivo;
 
-   
+
     public Ejercicio(String nombre, String rutaVideo, String rutaImagen, String instrucciones, int repeticionesObjetivo){
         this.nombre = nombre;
         this.rutaVideo = rutaVideo;
@@ -28,17 +28,16 @@ public class Ejercicio {
     public String getNombre() { return nombre; }
     public String getRutavideo() { return rutaVideo; }
 
-   
+
     public String getRutaImagen() { return rutaImagen; }
 
     public String getIntrucciones() { return intrucciones; }
-    public int getRepeticionesObjetivo() { return repeticionesObjetivo; 
-    
+    public int getRepeticionesObjetivo() { return repeticionesObjetivo;
+
     }
     public void setRepeticionesObjetivo(int repeticionesObjetivo) {
         this.repeticionesObjetivo = repeticionesObjetivo;
     }
-    
+
 }
         
-

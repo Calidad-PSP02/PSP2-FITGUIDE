@@ -211,7 +211,24 @@
                         <HBox spacing="8" alignment="CENTER_LEFT">
                             <Label text="" style="-fx-font-size: 16px;"/>
                             <Label text="Consejo del día"
-                                   style="-fx-text-fill: #4ecdc4; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                                   style="-fx-text-fill: #4ecdc4; -fx-font-size: 14px; -fx-font-weight: bold;"
+                                   HBox.hgrow="ALWAYS"/>
+
+                            <!-- ===== INICIO IMPLEMENTACIÓN DE SAÚL (botón para editar el consejo del día) ===== -->
+                            <Button fx:id="BtnEditarConsejo"
+                                    text="Editar"
+                                    onAction="#HandleEditarConsejo"
+                                    style="-fx-background-color: rgba(78,205,196,0.18);
+                                           -fx-text-fill: #4ecdc4;
+                                           -fx-font-size: 11px;
+                                           -fx-font-weight: bold;
+                                           -fx-background-radius: 12;
+                                           -fx-padding: 4 12 4 12;
+                                           -fx-cursor: hand;
+                                           -fx-border-color: #4ecdc4;
+                                           -fx-border-radius: 12;
+                                           -fx-border-width: 1;"/>
+                            <!-- ===== FIN IMPLEMENTACIÓN DE SAÚL ===== -->
                         </HBox>
                         <Label fx:id="LblConsejoDia"
                                text="&quot;El progreso no siempre se trata de hacer más, sino de ser más constante.&quot;"

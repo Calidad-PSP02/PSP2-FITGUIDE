@@ -94,6 +94,12 @@ public class ConexionDB {
                 + "url_video TEXT"
                 + ");";
 
+        // tabla de consejos del coach
+        String tablaConsejos = "CREATE TABLE IF NOT EXISTS consejos ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "texto TEXT NOT NULL"
+                + ");";
+
         try (Connection conn = conectar(); Statement stmt = conn.createStatement()) {
             stmt.execute(tablaUsuarios);
             stmt.execute(tablaHistorialRutinas);
@@ -101,6 +107,7 @@ public class ConexionDB {
             stmt.execute(tablaRutinasGuardadas);
             stmt.execute(tablaCoaches);
             stmt.execute(tablaEjerciciosCatalogo);
+            stmt.execute(tablaConsejos);
             System.out.println("Base de datos SQLite verificada e inicializada correctamente.");
         } catch (SQLException e) {
             System.err.println("Error crítico al inicializar la base de datos local: " + e.getMessage());

@@ -19,6 +19,12 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.ArrayList;
+import java.util.Optional;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.TextArea;
 /**
  *
  * @author migue
@@ -41,19 +47,16 @@ public class CoachPanelController implements Initializable {
 
     @FXML private Button BtnIrEjercicios;
 
+    @FXML private Button BtnEditarConsejo;
+
     @FXML private HBox BtnAgregarEjercicios;
     @FXML private HBox BtnRevisarUsuarios;
     @FXML private HBox BtnVerEstadisticas;
 
-    private static final List<String> CONSEJOS = List.of(
-        "\"El progreso no siempre se trata de hacer más, sino de ser más constante.\"",
-        "\"Cada repetición que completas hoy es una inversión en quien serás mañana.\"",
-        "\"La disciplina vence al talento cuando el talento no se está esforzando.\"",
-        "\"Bebe al menos 500 ml de agua antes de entrenar y 250 ml cada 20 minutos.\"",
-        "\"Exhala al hacer el esfuerzo, inhala al relajar. Nunca contengas el aliento.\"",
-        "\"No necesitas ser perfecto, solo constante. Cada esfuerzo cuenta.\"",
-        "\"5 minutos de calentamiento reducen el riesgo de lesión en un 50%.\""
-    );
+    // INICIO IMPLEMENTACIÓN DE SAÚL (consejos editables: lista mutable cargada desde la BD) 
+    // Los consejos por defecto ahora se insertan en la tabla "consejos" (ver insertarConsejosPorDefecto)
+    private final List<String> CONSEJOS = new ArrayList<>();
+    private boolean rotacionPausada = false;
     private int indiceConsejoActual = 0;
     private Timeline timelineConsejos;
 
@@ -63,6 +66,8 @@ public class CoachPanelController implements Initializable {
         if (LblTituloCoach != null)
             LblTituloCoach.setText("¡Hola, " + NombreCoach + "!");
         cargarStats();
+        // Carga de consejos desde la BD
+        cargarConsejosDesdeBD();
         iniciarRotacionConsejos();
 
         configurarHoverBotones();
@@ -100,11 +105,127 @@ public class CoachPanelController implements Initializable {
         }
     }
 
+    //  EDITAR CONSEJO (con persistencia)
+    @FXML
+    private void HandleEditarConsejo() {
+        if (timelineConsejos != null) {
+            timelineConsejos.stop();
+            rotacionPausada = true;
+        }
+
+        TextArea textArea = new TextArea(LblConsejoDia.getText());
+        textArea.setWrapText(true);
+        textArea.setPrefRowCount(5);
+        textArea.setPrefColumnCount(42);
+        textArea.setStyle("-fx-font-size: 13px;");
+
+        Dialog<String> dialog = new Dialog<>();
+        dialog.setTitle("Editar Consejo del Día");
+        dialog.setHeaderText("Modifica el consejo que se muestra");
+        dialog.getDialogPane().setContent(textArea);
+        dialog.getDialogPane().setPrefWidth(480);
+
+        ButtonType btnGuardar  = new ButtonType("Guardar",  ButtonBar.ButtonData.OK_DONE);
+        ButtonType btnCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getDialogPane().getButtonTypes().addAll(btnGuardar, btnCancelar);
+
+        dialog.setResultConverter(button -> button == btnGuardar ? textArea.getText().trim() : null);
+
+        Optional<String> resultado = dialog.showAndWait();
+        resultado.ifPresent(nuevoTexto -> {
+            if (!nuevoTexto.isEmpty()) {
+                LblConsejoDia.setText(nuevoTexto);
+
+                if (indiceConsejoActual >= 0 && indiceConsejoActual < CONSEJOS.size()) {
+                    CONSEJOS.set(indiceConsejoActual, nuevoTexto);
+                }
+                guardarConsejoEnBD(indiceConsejoActual, nuevoTexto);
+            }
+        });
+    }
+
+
+    //  PERSISTENCIA DE CONSEJOS
+    private void cargarConsejosDesdeBD() {
+        CONSEJOS.clear();
+        String sql = "SELECT texto FROM consejos ORDER BY id";
+
+        try (Connection con = abrirConexion();
+             Statement st = con.createStatement();
+             ResultSet rs = st.executeQuery(sql)) {
+
+            while (rs.next()) {
+                CONSEJOS.add(rs.getString("texto"));
+            }
+        } catch (SQLException e) {
+            System.err.println("[CoachPanel] Error cargando consejos: " + e.getMessage());
+        }
+
+        if (CONSEJOS.isEmpty()) {
+            insertarConsejosPorDefecto();
+        }
+    }
+
+    private void insertarConsejosPorDefecto() {
+        List<String> defaults = List.of(
+            "\"El progreso no siempre se trata de hacer más, sino de ser más constante.\"",
+            "\"Cada repetición que completas hoy es una inversión en quien serás mañana.\"",
+            "\"La disciplina vence al talento cuando el talento no se está esforzando.\"",
+            "\"Bebe al menos 500 ml de agua antes de entrenar y 250 ml cada 20 minutos.\"",
+            "\"Exhala al hacer el esfuerzo, inhala al relajar. Nunca contengas el aliento.\"",
+            "\"No necesitas ser perfecto, solo constante. Cada esfuerzo cuenta.\"",
+            "\"5 minutos de calentamiento reducen el riesgo de lesión en un 50%.\""
+        );
+
+        String sql = "INSERT INTO consejos (texto) VALUES (?)";
+        try (Connection con = abrirConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            for (String texto : defaults) {
+                ps.setString(1, texto);
+                ps.executeUpdate();
+                CONSEJOS.add(texto);
+            }
+        } catch (SQLException e) {
+            System.err.println("[CoachPanel] Error insertando consejos por defecto: " + e.getMessage());
+            CONSEJOS.addAll(defaults);
+        }
+    }
+
+    private void guardarConsejoEnBD(int indice, String nuevoTexto) {
+        String sql = "UPDATE consejos SET texto = ? WHERE id = ?";
+        try (Connection con = abrirConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, nuevoTexto);
+            ps.setInt(2, indice + 1);
+            int filas = ps.executeUpdate();
+
+            if (filas == 0) {
+                try (PreparedStatement psIns = con.prepareStatement(
+                        "INSERT INTO consejos (texto) VALUES (?)")) {
+                    psIns.setString(1, nuevoTexto);
+                    psIns.executeUpdate();
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("[CoachPanel] Error guardando consejo: " + e.getMessage());
+            mostrarAlerta("Error", "No se pudo guardar el consejo en la base de datos.");
+        }
+    }
+    //  FIN IMPLEMENTACIÓN DE SAÚL 
+
     private void iniciarRotacionConsejos() {
+        // ===== INICIO IMPLEMENTACIÓN DE SAÚL (rotación con lista vacía o pausada) =====
+        if (CONSEJOS.isEmpty()) return;
+        // ===== FIN IMPLEMENTACIÓN DE SAÚL =====
         actualizarConsejoConFade(CONSEJOS.get(0));
 
         timelineConsejos = new Timeline(
             new KeyFrame(Duration.seconds(10), e -> {
+                // ===== INICIO IMPLEMENTACIÓN DE SAÚL (rotación con lista vacía o pausada) =====
+                if (rotacionPausada || CONSEJOS.isEmpty()) return;
+                // ===== FIN IMPLEMENTACIÓN DE SAÚL =====
                 indiceConsejoActual = (indiceConsejoActual + 1) % CONSEJOS.size();
                 actualizarConsejoConFade(CONSEJOS.get(indiceConsejoActual));
             })
@@ -183,7 +304,9 @@ public class CoachPanelController implements Initializable {
     @FXML
     private void HandleCerrarSesion() {
         detenerTimeline();
-        Sesion.cerrarSesion();
+        // ===== INICIO IMPLEMENTACIÓN DE MIGUEL (corrección de sesión) =====
+        Sesion.cerrarSesion();   // limpia sesión y rutinas en memoria (no quitar)
+        // ===== FIN IMPLEMENTACIÓN DE MIGUEL =====
         NombreCoach   = "Coach";
         IdCoachActual = -1;
         navegarA("PantallaInicio"); 

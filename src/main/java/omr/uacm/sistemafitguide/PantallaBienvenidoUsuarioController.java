@@ -27,6 +27,9 @@ import javafx.scene.layout.GridPane;
 import java.io.File;
 import java.sql.SQLException;
 import javafx.stage.FileChooser;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  * FXML Controller class
@@ -44,6 +47,17 @@ public class PantallaBienvenidoUsuarioController implements Initializable {
     @FXML private GridPane gridCalendario;
     @FXML private Label lblRachaTexto;
 
+    @FXML private Label lblIMCValor;
+    @FXML private Label lblIMCClasificacion;
+
+    // Rangos en los que un dato se considera real. Fuera de ellos no se calcula el IMC.
+    private static final double PESO_MIN_KG   = 10.0;
+    private static final double PESO_MAX_KG   = 400.0;
+    private static final double ALTURA_MIN_M  = 0.5;
+    private static final double ALTURA_MAX_M  = 2.8;
+    private static final double IMC_MIN        = 8.0;
+    private static final double IMC_MAX        = 80.0;
+
     // Conectores de datos
     private final HistorialRutinaDAO historialDAO = new HistorialRutinaDAO();
 
@@ -53,7 +67,131 @@ public class PantallaBienvenidoUsuarioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         generarCalendarioDinamico();
-    }    
+        calcularYMostrarIMC();         
+    }
+
+    // IMPLEMENTACIÓN DE SAÚL (HU-02: IMC) 
+ 
+    private void calcularYMostrarIMC() {
+        int idUsuario = Sesion.idUsuarioActivo;
+
+        if (idUsuario <= 0) {
+            mostrarIMCSinDatos("Sin sesión");
+            return;
+        }
+
+        String sql = "SELECT peso, altura FROM usuarios WHERE id_usuario = ?";
+
+        try (Connection con = ConexionDB.conectar();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, idUsuario);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                double peso   = rs.getDouble("peso");     // kg
+                double altura = rs.getDouble("altura");   // metros (1.75) o centímetros (175)
+
+                if (peso <= 0 || altura <= 0) {
+                    mostrarIMCSinDatos("Datos incompletos");
+                    return;
+                }
+
+                // Acepta la altura en metros o en centímetros (antes se asumía solo cm)
+                double alturaMetros = alturaAMetros(altura);
+
+                if (peso < PESO_MIN_KG || peso > PESO_MAX_KG || alturaMetros < 0) {
+                    System.err.println("[IMC] Datos fuera de rango: peso=" + peso
+                            + " altura=" + altura);
+                    mostrarIMCSinDatos("Datos fuera de rango");
+                    return;
+                }
+
+                double imc = calcularIMC(peso, alturaMetros);
+
+                // Red de seguridad: nunca mostrar un IMC imposible
+                if (imc < IMC_MIN || imc > IMC_MAX) {
+                    System.err.println("[IMC] Resultado imposible (" + imc + ") con peso="
+                            + peso + " altura=" + altura);
+                    mostrarIMCSinDatos("Datos fuera de rango");
+                    return;
+                }
+
+                actualizarEtiquetasIMC(imc);
+
+            } else {
+                mostrarIMCSinDatos("Usuario no encontrado");
+            }
+
+        } catch (SQLException e) {
+            System.err.println("[IMC] Error al consultar datos: " + e.getMessage());
+            mostrarIMCSinDatos("Error de conexión");
+        }
+    }
+
+    /**
+     * Convierte la altura guardada a metros, sea cual sea la unidad en que se registró.
+     * @return la altura en metros, o -1 si el valor no es una altura humana posible
+     */
+    static double alturaAMetros(double altura) {
+        if (altura >= ALTURA_MIN_M && altura <= ALTURA_MAX_M) {
+            return altura;
+        }
+        if (altura >= ALTURA_MIN_M * 100 && altura <= ALTURA_MAX_M * 100) {
+            return altura / 100.0;
+        }
+        return -1;
+    }
+
+    /** IMC = peso (kg) / altura² (m). */
+    static double calcularIMC(double pesoKg, double alturaMetros) {
+        return pesoKg / (alturaMetros * alturaMetros);
+    }
+
+    private void actualizarEtiquetasIMC(double imc) {
+        String imcTexto = String.format("%.1f", imc);
+        lblIMCValor.setText("IMC: " + imcTexto);
+
+        String clasificacion;
+        String colorFondo;
+        String colorTexto = "white";
+
+        if (imc < 18.5) {
+            clasificacion = "Bajo peso";
+            colorFondo = "#FFC107";       // Amarillo
+            colorTexto = "#333333";
+        } else if (imc < 25.0) {
+            clasificacion = "Normal";
+            colorFondo = "#4CAF50";       // Verde
+        } else if (imc < 30.0) {
+            clasificacion = "Sobrepeso";
+            colorFondo = "#FFC107";       // Amarillo
+            colorTexto = "#333333";
+        } else {
+            clasificacion = "Obesidad";
+            colorFondo = "#E53935";       // Rojo
+        }
+
+        lblIMCClasificacion.setText(clasificacion);
+        lblIMCClasificacion.setStyle(
+            "-fx-background-color: " + colorFondo + ";" +
+            "-fx-text-fill: " + colorTexto + ";" +
+            "-fx-background-radius: 20;" +
+            "-fx-padding: 5 16;"
+        );
+    }
+
+    private void mostrarIMCSinDatos(String mensaje) {
+        lblIMCValor.setText("IMC: --");
+        lblIMCClasificacion.setText(mensaje);
+        lblIMCClasificacion.setStyle(
+            "-fx-background-color: #9E9E9E;" +
+            "-fx-text-fill: white;" +
+            "-fx-background-radius: 20;" +
+            "-fx-padding: 5 16;"
+        );
+    }
+    //  FIN IMPLEMENTACIÓN DE SAÚL 
 
     @FXML
     private void accionEmpezarRutina() {
@@ -129,6 +267,7 @@ public class PantallaBienvenidoUsuarioController implements Initializable {
         panelNotificacion.setVisible(false);
     }
     
+    // INICIO IMPLEMENTACIÓN DE MIGUEL 
      @FXML
     private void accionExportarHistorial(ActionEvent event) {
         FileChooser selector = new FileChooser();
@@ -169,6 +308,7 @@ public class PantallaBienvenidoUsuarioController implements Initializable {
         alerta.setContentText(mensaje);
         alerta.showAndWait();
     }
+    // FIN IMPLEMENTACIÓN DE MIGUEL 
     
     // logica para el calendario dinamico
     private void generarCalendarioDinamico() {

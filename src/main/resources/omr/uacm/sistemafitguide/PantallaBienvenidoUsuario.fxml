@@ -101,7 +101,8 @@
                      <padding><Insets top="40.0" /></padding>
                   </VBox>
 
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="240.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                  <!-- Ajuste de Miguel: espaciado reducido (20 a 10) para que quepan el IMC de Saúl y el botón de exportar -->
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="240.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
                         <GridPane fx:id="gridCalendario" alignment="CENTER" hgap="3.0" prefHeight="215.0" prefWidth="216.0" style="-fx-background-color: #E4F2E7; -fx-background-radius: 15; -fx-padding: 15;" vgap="3.0">
                            <columnConstraints>
@@ -150,17 +151,38 @@
                         <Label fx:id="lblRachaTexto" style="-fx-background-color: #E4F2E7; -fx-background-radius: 20; -fx-padding: 8 20; -fx-text-fill: #2E7D32;" text="0 DÍAS DE RACHA">
                            <font><Font name="System Bold" size="15.0" /></font>
                         </Label>
+
+                        <!-- ===== INICIO IMPLEMENTACIÓN DE SAÚL (HU-02: IMC) ===== -->
+                        <VBox alignment="CENTER" spacing="6.0"
+                              style="-fx-background-color: #E4F2E7; -fx-background-radius: 15; -fx-padding: 12 18;">
+                           <children>
+                              <Label text="ÍNDICE DE MASA CORPORAL" textFill="#2E7D32">
+                                 <font><Font name="System Bold" size="11.0" /></font>
+                              </Label>
+                              <Label fx:id="lblIMCValor" text="IMC: --" textFill="#1B5E20">
+                                 <font><Font name="System Bold" size="22.0" /></font>
+                              </Label>
+                              <Label fx:id="lblIMCClasificacion"
+                                     style="-fx-background-radius: 20; -fx-padding: 5 16;"
+                                     text="Cargando...">
+                                 <font><Font name="System Bold" size="13.0" /></font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <!-- ===== FIN IMPLEMENTACIÓN DE SAÚL ===== -->
                         
                         <Button mnemonicParsing="false" onAction="#accionConfigurarRutina" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 30; -fx-font-weight: bold; -fx-font-size: 13px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 8, 0, 0, 4);" text="PERSONALIZAR RUTINA">
                            <cursor><Cursor fx:constant="HAND" /></cursor>
                            <VBox.margin>
-                              <Insets bottom="15.0" top="15.0" />
+                              <Insets bottom="5.0" top="5.0" />
                            </VBox.margin>
                         </Button>
 
+                        <!-- ===== INICIO IMPLEMENTACIÓN DE MIGUEL (HU-01: exportar historial) ===== -->
                         <Button mnemonicParsing="false" onAction="#accionExportarHistorial" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #2D5A27; -fx-text-fill: white; -fx-background-radius: 30; -fx-font-weight: bold; -fx-font-size: 13px;" text="EXPORTAR HISTORIAL">
                            <cursor><Cursor fx:constant="HAND" /></cursor>
                         </Button>
+                        <!-- ===== FIN IMPLEMENTACIÓN DE MIGUEL ===== -->
                      </children>
                   </VBox>
                </children>

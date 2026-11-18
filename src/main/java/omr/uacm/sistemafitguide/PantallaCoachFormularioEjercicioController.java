@@ -21,11 +21,11 @@ import javafx.scene.control.TextField;
  */
 public class PantallaCoachFormularioEjercicioController implements Initializable {
 
-    // ── Variables Estáticas para Transferencia de Estado ─────────────────────
+    //  Variables Estáticas para Transferencia de Estado 
     public static EjercicioCoach ejercicioAEditar = null;
     public static boolean modoEdicion = false;
 
-    // ── Componentes de la Interfaz (Notación Húngara) ────────────────────────
+    // Componentes de la Interfaz (Notación Húngara)
     @FXML private Label lblTituloPantalla;
     @FXML private Label lblSubtituloPantalla;
 
@@ -115,7 +115,7 @@ public class PantallaCoachFormularioEjercicioController implements Initializable
         txtUrlVideo.setText(ejercicioAEditar.getUrlVideo());
     }
 
-    // ── Acciones de Guardar y Cancelar (PascalCase y camelCase) ──────────────
+    // acciones de Guardar y Cancelar (PascalCase y camelCase)
 
     @FXML
     public void GuardarEjercicio(ActionEvent event) {
@@ -155,14 +155,27 @@ public class PantallaCoachFormularioEjercicioController implements Initializable
         if (modoEdicion && ejercicioAEditar != null) {
             // Modo Actualizar
             EjercicioCoach actualizado = new EjercicioCoach(
-                ejercicioAEditar.getIdEjercicio(),
-                nombre, zona, nivel, tipoPeso,
-                reps, series, duracion, descanso,
-                descripcion, urlImagen, urlVideo
+                    ejercicioAEditar.getIdEjercicio(),
+                    nombre, zona, nivel, tipoPeso,
+                    reps, series, duracion, descanso,
+                    descripcion, urlImagen, urlVideo
             );
 
             boolean exito = dao.Actualizar(actualizado);
             if (exito) {
+                // Actualizar propiedades observables del objeto en memoria
+                ejercicioAEditar.setNombre(nombre);
+                ejercicioAEditar.setZonaCorporal(zona);
+                ejercicioAEditar.setNivel(nivel);
+                ejercicioAEditar.setTipoPeso(tipoPeso);
+                ejercicioAEditar.setRepeticiones(reps);
+                ejercicioAEditar.setSeries(series);
+                ejercicioAEditar.setDuracion(duracion);
+                ejercicioAEditar.setDescanso(descanso);
+                ejercicioAEditar.setDescripcion(descripcion);
+                ejercicioAEditar.setUrlImagen(urlImagen);
+                ejercicioAEditar.setUrlVideo(urlVideo);
+
                 MostrarAlerta("Éxito", "El ejercicio '" + nombre + "' fue actualizado correctamente.", Alert.AlertType.INFORMATION);
                 VolverAlCatalogo();
             } else {
@@ -171,9 +184,9 @@ public class PantallaCoachFormularioEjercicioController implements Initializable
         } else {
             // Modo Insertar
             EjercicioCoach nuevo = new EjercicioCoach(
-                nombre, zona, nivel, tipoPeso,
-                reps, series, duracion, descanso,
-                descripcion, urlImagen, urlVideo
+                    nombre, zona, nivel, tipoPeso,
+                    reps, series, duracion, descanso,
+                    descripcion, urlImagen, urlVideo
             );
 
             boolean exito = dao.Agregar(nuevo);
@@ -210,7 +223,7 @@ public class PantallaCoachFormularioEjercicioController implements Initializable
         alert.showAndWait();
     }
 
-    // ── Alias camelCase para compatibilidad dual ─────────────────────────────
+    //  Alias camelCase para compatibilidad dual 
     @FXML public void guardarEjercicio(ActionEvent event) { GuardarEjercicio(event); }
     @FXML public void cancelar(ActionEvent event) { Cancelar(event); }
 }
